@@ -1,0 +1,201 @@
+{
+  "exams": [
+    {
+      "slug": "afu-entrance",
+      "nameEn": "AFU Entrance (Agriculture/Forestry/Vet)",
+      "nameNp": "एएफयू प्रवेश",
+      "forCareer": ["agriculture", "forestry", "veterinary", "bsc-fisheries"],
+      "eligibility": "+2 Science (Bio/Ag) per program; AFU conducts its own entrance for constituent + affiliated campuses.",
+      "syllabusUrl": "https://afu.edu.np",
+      "scheduleMonth": "Baisakh-Jestha (Apr-Jun)",
+      "appFeeNpr": 1500,
+      "prepResources": ["https://afu.edu.np"],
+      "officialUrl": "https://afu.edu.np",
+      "sourceUrls": ["https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University", "https://foa.edu.np/administrations/about-university"],
+      "verifiedDate": "2026-08-30"
+    }
+  ],
+  "careers": [
+    {
+      "slug": "bsc-fisheries",
+      "titleEn": "B.Sc. Fisheries",
+      "titleNp": "बी.एस्सी. मत्स्य विज्ञान",
+      "stream": "Science",
+      "subjectCombo": "Sci+Bio",
+      "minGpa": 2.0,
+      "entranceExams": ["afu-entrance"],
+      "educationPath": ["+2 Science (Bio)", "B.Sc. Fisheries (4y) — AFU Rampur"],
+      "furtherStudy": ["M.Sc. Fisheries", "Aquaculture"],
+      "skills": ["Aquaculture", "Limnology", "Hatchery mgmt"],
+      "abroadVsNepal": {
+        "nepalCost": "B.Sc. Fisheries NPR 2-4 lakh",
+        "abroadCostEst": "USD 15k-40k/year",
+        "roiNepal": "Hatcheries + gov fisheries dept",
+        "roiAbroad": "Aquaculture industry",
+        "riskNotes": "Niche; growing aquaculture sector"
+      },
+      "salaryNp": { "rangeLow": 25000, "rangeHigh": 45000, "currency": "NPR", "period": "month", "confidence": "estimate", "source": "https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University" },
+      "sourceUrls": ["https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University"],
+      "verifiedDate": "2026-08-30"
+    },
+    {
+      "slug": "bpt",
+      "titleEn": "Bachelor in Physiotherapy (BPT)",
+      "titleNp": "फिजियोथेरापी",
+      "stream": "Science",
+      "subjectCombo": "Sci+Bio",
+      "minGpa": 2.0,
+      "entranceExams": ["mecee-bl", "ku-entrance"],
+      "educationPath": ["+2 Science (Bio)", "BPT (4y) — KU/TU"],
+      "furtherStudy": ["MPT", "M.Sc. Physiotherapy"],
+      "skills": ["Rehab", "Anatomy", "Manual therapy"],
+      "abroadVsNepal": {
+        "nepalCost": "BPT NPR 3-6 lakh",
+        "abroadCostEst": "USD 15k-45k/year",
+        "roiNepal": "Hospitals + rehab centers; aging pop demand",
+        "roiAbroad": "Licensed physio abroad well paid",
+        "riskNotes": "Abroad license exam required"
+      },
+      "salaryNp": { "rangeLow": 30000, "rangeHigh": 60000, "currency": "NPR", "period": "month", "confidence": "estimate", "source": "https://kusms.edu.np/" },
+      "sourceUrls": ["https://kusms.edu.np/", "https://www.collegenp.com/college/kathmandu-university-school-of-medical-science-kusms-kavre"],
+      "verifiedDate": "2026-08-30"
+    },
+    {
+      "slug": "biotechnology",
+      "titleEn": "B.Sc. Biotechnology",
+      "titleNp": "बी.एस्सी. बायोटेक्नोलोजी",
+      "stream": "Science",
+      "subjectCombo": "Sci+Bio",
+      "minGpa": 2.0,
+      "entranceExams": ["ku-entrance"],
+      "educationPath": ["+2 Science (Bio)", "B.Sc. Biotechnology (4y) — KU/TU"],
+      "furtherStudy": ["M.Sc. Biotechnology", "M.Sc. Bioinformatics"],
+      "skills": ["Lab", "Molecular bio", "Research"],
+      "abroadVsNepal": {
+        "nepalCost": "B.Sc. Biotech NPR 3-6 lakh",
+        "abroadCostEst": "USD 20k-55k/year",
+        "roiNepal": "Pharma + research labs; early-stage",
+        "roiAbroad": "Biotech/pharma strong",
+        "riskNotes": "Research path needs postgrad"
+      },
+      "salaryNp": { "rangeLow": 25000, "rangeHigh": 50000, "currency": "NPR", "period": "month", "confidence": "estimate", "source": "https://en.wikipedia.org/wiki/Kathmandu_University" },
+      "sourceUrls": ["https://en.wikipedia.org/wiki/Kathmandu_University"],
+      "verifiedDate": "2026-08-30"
+    },
+    {
+      "slug": "environmental-science",
+      "titleEn": "B.Sc. Environmental Science",
+      "titleNp": "वातावरण विज्ञान",
+      "stream": "Science",
+      "subjectCombo": "Sci+Bio",
+      "minGpa": 2.0,
+      "entranceExams": ["ku-entrance"],
+      "educationPath": ["+2 Science (Bio)", "B.Sc. Env Sci (4y) — KU/TU"],
+      "furtherStudy": ["M.Sc. Env Sci", "MSc Climate Change"],
+      "skills": ["Ecology", "GIS", "Policy"],
+      "abroadVsNepal": {
+        "nepalCost": "B.Sc. Env Sci NPR 2-5 lakh",
+        "abroadCostEst": "USD 15k-45k/year",
+        "roiNepal": "INGO + gov environment offices",
+        "roiAbroad": "Climate/environment orgs",
+        "riskNotes": "INGO demand in Nepal"
+      },
+      "salaryNp": { "rangeLow": 25000, "rangeHigh": 45000, "currency": "NPR", "period": "month", "confidence": "estimate", "source": "https://en.wikipedia.org/wiki/Kathmandu_University" },
+      "sourceUrls": ["https://en.wikipedia.org/wiki/Kathmandu_University"],
+      "verifiedDate": "2026-08-30"
+    },
+    {
+      "slug": "data-science-ai",
+      "titleEn": "B.Sc. Data Science / AI",
+      "titleNp": "डाटा साइन्स / एआई",
+      "stream": "Science",
+      "subjectCombo": "Sci+Math",
+      "minGpa": 2.0,
+      "entranceExams": ["ku-entrance"],
+      "educationPath": ["+2 Science (Math)", "B.Sc. Data Sci/AI (4y) — KU"],
+      "furtherStudy": ["M.Sc. AI/Data Sci"],
+      "skills": ["Python", "ML", "Statistics"],
+      "abroadVsNepal": {
+        "nepalCost": "B.Sc. NPR 3-8 lakh",
+        "abroadCostEst": "USD 25k-70k/year",
+        "roiNepal": "Highest remote-work potential",
+        "roiAbroad": "Very high salaries",
+        "riskNotes": "Can freelance globally from Nepal"
+      },
+      "salaryNp": { "rangeLow": 45000, "rangeHigh": 100000, "currency": "NPR", "period": "month", "confidence": "estimate", "source": "https://en.wikipedia.org/wiki/Kathmandu_University" },
+      "sourceUrls": ["https://en.wikipedia.org/wiki/Kathmandu_University"],
+      "verifiedDate": "2026-08-30"
+    },
+    {
+      "slug": "statistics",
+      "titleEn": "B.Sc. Statistics",
+      "titleNp": "बी.एस्सी. तथ्याङ्क",
+      "stream": "Science",
+      "subjectCombo": "Sci+Math",
+      "minGpa": 2.0,
+      "entranceExams": [],
+      "educationPath": ["+2 Science (Math)", "B.Sc. Statistics (4y) — TU"],
+      "furtherStudy": ["M.Sc. Statistics", "Data Science"],
+      "skills": ["Probability", "Data analysis", "R/Python"],
+      "abroadVsNepal": {
+        "nepalCost": "B.Sc. Statistics NPR 2-4 lakh",
+        "abroadCostEst": "USD 15k-45k/year",
+        "roiNepal": "Actuarial + data roles; banking",
+        "roiAbroad": "Strong analytics demand",
+        "riskNotes": "Gateway to data careers"
+      },
+      "salaryNp": { "rangeLow": 30000, "rangeHigh": 60000, "currency": "NPR", "period": "month", "confidence": "estimate", "source": "https://en.wikipedia.org/wiki/Tribhuvan_University" },
+      "sourceUrls": ["https://en.wikipedia.org/wiki/Tribhuvan_University"],
+      "verifiedDate": "2026-08-30"
+    }
+  ],
+  "colleges": [
+    { "name": "AFU Central Campus, Rampur", "slug": "afu-rampur", "affiliation": "Other", "type": "public", "lat": 27.65, "lng": 84.35, "district": "Chitwan", "province": "Bagmati", "programs": ["agriculture", "veterinary", "bsc-fisheries"], "entranceRequired": "afu-entrance", "minEligibility": "+2 Sci Bio/Ag", "website": "https://afu.edu.np", "sourceUrls": ["https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University"], "verifiedDate": "2026-08-30" },
+    { "name": "AFU Forestry Campus, Hetauda", "slug": "afu-hetauda", "affiliation": "Other", "type": "public", "lat": 27.48, "lng": 85.05, "district": "Makwanpur", "province": "Bagmati", "programs": ["forestry"], "entranceRequired": "afu-entrance", "minEligibility": "+2 Sci Bio/Ag", "website": "https://afu.edu.np", "sourceUrls": ["https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University"], "verifiedDate": "2026-08-30" },
+    { "name": "College of Natural Resource Management, Katari", "slug": "cnrm-katari", "affiliation": "Other", "type": "public", "lat": 26.85, "lng": 86.40, "district": "Udayapur", "province": "Koshi", "programs": ["agriculture"], "entranceRequired": "afu-entrance", "minEligibility": "+2 Sci Bio/Ag", "website": "https://afu.edu.np", "sourceUrls": ["https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University"], "verifiedDate": "2026-08-30" },
+    { "name": "College of Natural Resource Management, Pakhribas", "slug": "cnrm-pakhribas", "affiliation": "Other", "type": "public", "lat": 26.95, "lng": 87.15, "district": "Dhankuta", "province": "Koshi", "programs": ["agriculture"], "entranceRequired": "afu-entrance", "minEligibility": "+2 Sci Bio/Ag", "website": "https://afu.edu.np", "sourceUrls": ["https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University"], "verifiedDate": "2026-08-30" },
+    { "name": "College of Natural Resource Management, Tikapur", "slug": "cnrm-tikapur", "affiliation": "Other", "type": "public", "lat": 28.55, "lng": 81.10, "district": "Kailali", "province": "Sudurpashchim", "programs": ["agriculture"], "entranceRequired": "afu-entrance", "minEligibility": "+2 Sci Bio/Ag", "website": "https://afu.edu.np", "sourceUrls": ["https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University"], "verifiedDate": "2026-08-30" },
+    { "name": "College of Natural Resource Management, Bardibas", "slug": "cnrm-bardibas", "affiliation": "Other", "type": "public", "lat": 26.95, "lng": 85.85, "district": "Mahottari", "province": "Madhesh", "programs": ["agriculture"], "entranceRequired": "afu-entrance", "minEligibility": "+2 Sci Bio/Ag", "website": "https://afu.edu.np", "sourceUrls": ["https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University"], "verifiedDate": "2026-08-30" },
+    { "name": "KIST Medical College", "slug": "kist", "affiliation": "KU", "type": "private", "lat": 27.65, "lng": 85.35, "district": "Lalitpur", "province": "Bagmati", "programs": ["mbbs", "bds", "bsc-nursing"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://kistmedicalcollege.edu.np", "sourceUrls": ["https://medicalsanjal.com/medical-colleges-in-nepal", "https://en.wikipedia.org/wiki/List_of_medical_colleges_in_Nepal"], "verifiedDate": "2026-08-30" },
+    { "name": "Gandaki Medical College", "slug": "gandaki", "affiliation": "TU", "type": "private", "lat": 28.20, "lng": 83.98, "district": "Kaski", "province": "Gandaki", "programs": ["mbbs", "bsc-nursing"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://gmcth.edu.np", "sourceUrls": ["https://medicalsanjal.com/medical-colleges-in-nepal", "https://ehealthsewa.com/tu-affiliated-medical-colleges-in-nepal/"], "verifiedDate": "2026-08-30" },
+    { "name": "Janaki Medical College", "slug": "janaki", "affiliation": "TU", "type": "private", "lat": 26.73, "lng": 85.92, "district": "Dhanusha", "province": "Madhesh", "programs": ["mbbs", "bsc-nursing"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://janakimedicalcollege.edu.np", "sourceUrls": ["https://ehealthsewa.com/tu-affiliated-medical-colleges-in-nepal/"], "verifiedDate": "2026-08-30" },
+    { "name": "Nepal Army Institute of Health Sciences (NAIHS)", "slug": "naibs", "affiliation": "TU", "type": "public", "lat": 27.69, "lng": 85.29, "district": "Kathmandu", "province": "Bagmati", "programs": ["mbbs", "bds", "bsc-nursing"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://naihs.edu.np", "sourceUrls": ["https://en.wikipedia.org/wiki/List_of_medical_colleges_in_Nepal", "https://ehealthsewa.com/tu-affiliated-medical-colleges-in-nepal/"], "verifiedDate": "2026-08-30" },
+    { "name": "Nepalgunj Medical College", "slug": "ngmc", "affiliation": "KU", "type": "private", "lat": 28.10, "lng": 81.60, "district": "Banke", "province": "Lumbini", "programs": ["mbbs", "bsc-nursing"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://ngmc.edu.np", "sourceUrls": ["https://kusms.edu.np/affiliated-colleges-and-extended-programs/"], "verifiedDate": "2026-08-30" },
+    { "name": "Devdaha Medical College", "slug": "devdaha", "affiliation": "KU", "type": "private", "lat": 27.62, "lng": 83.45, "district": "Rupandehi", "province": "Lumbini", "programs": ["mbbs", "bsc-nursing"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://devdahamedicalcollege.edu.np", "sourceUrls": ["https://kusms.edu.np/affiliated-colleges-and-extended-programs/"], "verifiedDate": "2026-08-30" },
+    { "name": "Lumbini Medical College", "slug": "lumbini", "affiliation": "KU", "type": "private", "lat": 27.82, "lng": 83.55, "district": "Palpa", "province": "Lumbini", "programs": ["mbbs", "bsc-nursing"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://lmc.edu.np", "sourceUrls": ["https://kusms.edu.np/affiliated-colleges-and-extended-programs/"], "verifiedDate": "2026-08-30" },
+    { "name": "Kantipur Dental College", "slug": "kantipur-dental", "affiliation": "KU", "type": "private", "lat": 27.70, "lng": 85.32, "district": "Kathmandu", "province": "Bagmati", "programs": ["bds"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://kantipurdental.edu.np", "sourceUrls": ["https://kusms.edu.np/affiliated-colleges-and-extended-programs/"], "verifiedDate": "2026-08-30" },
+    { "name": "Scheer Memorial Nursing College", "slug": "scheer", "affiliation": "KU", "type": "private", "lat": 27.63, "lng": 85.53, "district": "Kavrepalanchok", "province": "Bagmati", "programs": ["bsc-nursing"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://scheermemorial.org", "sourceUrls": ["https://kusms.edu.np/affiliated-colleges-and-extended-programs/"], "verifiedDate": "2026-08-30" },
+    { "name": "People's Dental College", "slug": "peoples-dental", "affiliation": "TU", "type": "private", "lat": 27.72, "lng": 85.31, "district": "Kathmandu", "province": "Bagmati", "programs": ["bds"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://peoplesdentalcollege.edu.np", "sourceUrls": ["https://ehealthsewa.com/tu-affiliated-medical-colleges-in-nepal/"], "verifiedDate": "2026-08-30" },
+    { "name": "Manmohan Memorial Institute of Health Sciences", "slug": "manmohan", "affiliation": "TU", "type": "private", "lat": 27.70, "lng": 85.33, "district": "Kathmandu", "province": "Bagmati", "programs": ["bsc-nursing", "pharmacy", "bph"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://mmihs.edu.np", "sourceUrls": ["https://ehealthsewa.com/tu-affiliated-medical-colleges-in-nepal/"], "verifiedDate": "2026-08-30" },
+    { "name": "Nepal Ayurved Medical College", "slug": "nepal-ayurved", "affiliation": "TU", "type": "private", "lat": 27.01, "lng": 84.87, "district": "Parsa", "province": "Madhesh", "programs": ["ayurveda"], "entranceRequired": "mecee-bl", "minEligibility": "+2 Sci Bio", "website": "https://namcktm.edu.np", "sourceUrls": ["https://ehealthsewa.com/tu-affiliated-medical-colleges-in-nepal/"], "verifiedDate": "2026-08-30" },
+    { "name": "Nepal Engineering College", "slug": "nec-pu", "affiliation": "PU", "type": "private", "lat": 27.62, "lng": 85.43, "district": "Bhaktapur", "province": "Bagmati", "programs": ["civil-engineer", "computer-engineer", "electronics-comm-engineer"], "entranceRequired": "ioe", "minEligibility": "+2 Sci PCM min 45%", "website": "https://nec.edu.np", "sourceUrls": ["https://edusanjal.com/ranking/top-engineering-colleges-nepal"], "verifiedDate": "2026-08-30" }
+  ],
+  "scholarships": [],
+  "outcomes": [
+    { "careerSlug": "data-science-ai", "salaryNp": { "rangeLow": 45000, "rangeHigh": 100000, "confidence": "estimate" }, "notes": "Remote/global; upper bound often exceeded", "source": "https://en.wikipedia.org/wiki/Kathmandu_University", "date": "2026-08-30" },
+    { "careerSlug": "agriculture", "salaryNp": { "rangeLow": 25000, "rangeHigh": 45000, "confidence": "estimate" }, "notes": "Gov ag offices + agribusiness", "source": "https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University", "date": "2026-08-30" }
+  ],
+  "roadmaps": [
+    { "careerSlug": "bpt", "steps": [
+      { "type": "study", "label": "+2 Science (Biology)", "duration": "2y", "source": "https://kusms.edu.np/" },
+      { "type": "exam", "label": "MECEE-BL or KU entrance", "notes": "Per college affiliation", "source": "https://kusms.edu.np/" },
+      { "type": "apply", "label": "Apply to KU/TU physio college", "source": "https://kusms.edu.np/" },
+      { "type": "study", "label": "BPT (4 years)", "source": "https://kusms.edu.np/" },
+      { "type": "work", "label": "Hospital/rehab; MPT for specialization", "source": "https://www.collegenp.com/college/kathmandu-university-school-of-medical-science-kusms-kavre" }
+    ]},
+    { "careerSlug": "data-science-ai", "steps": [
+      { "type": "study", "label": "+2 Science (Mathematics)", "duration": "2y", "source": "https://en.wikipedia.org/wiki/Kathmandu_University" },
+      { "type": "exam", "label": "KU entrance", "source": "https://ku.edu.np" },
+      { "type": "apply", "label": "Apply to KU B.Sc. Data Sci/AI", "source": "https://ku.edu.np" },
+      { "type": "study", "label": "B.Sc. Data Sci/AI (4y)", "source": "https://en.wikipedia.org/wiki/Kathmandu_University" },
+      { "type": "work", "label": "Remote/dev roles; freelance globally", "source": "https://en.wikipedia.org/wiki/Kathmandu_University" }
+    ]},
+    { "careerSlug": "agriculture", "steps": [
+      { "type": "study", "label": "+2 Science (Bio/Ag)", "duration": "2y", "source": "https://afu.edu.np" },
+      { "type": "exam", "label": "AFU Entrance", "source": "https://afu.edu.np" },
+      { "type": "apply", "label": "Apply to AFU campus / CNRM", "source": "https://afu.edu.np" },
+      { "type": "study", "label": "B.Sc. Agriculture (4y)", "source": "https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University" },
+      { "type": "work", "label": "Gov agriculture office / agribusiness", "source": "https://en.wikipedia.org/wiki/Agriculture_and_Forestry_University" }
+    ]}
+  ]
+}

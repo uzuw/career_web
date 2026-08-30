@@ -28,16 +28,34 @@ async function upsertMany(model: any, docs: any[], key: string) {
 
 async function main() {
   await connectDB();
-  const file = path.join(__dirname, "data", "seed.json");
-  const data = JSON.parse(fs.readFileSync(file, "utf-8")) as SeedFile;
+  const files = ["seed.json", "seed2.json"];
+  const merged: SeedFile = {
+    exams: [],
+    careers: [],
+    colleges: [],
+    scholarships: [],
+    outcomes: [],
+    roadmaps: [],
+  };
+  for (const f of files) {
+    const file = path.join(__dirname, "data", f);
+    if (!fs.existsSync(file)) continue;
+    const part = JSON.parse(fs.readFileSync(file, "utf-8")) as Partial<SeedFile>;
+    merged.exams.push(...(part.exams ?? []));
+    merged.careers.push(...(part.careers ?? []));
+    merged.colleges.push(...(part.colleges ?? []));
+    merged.scholarships.push(...(part.scholarships ?? []));
+    merged.outcomes.push(...(part.outcomes ?? []));
+    merged.roadmaps.push(...(part.roadmaps ?? []));
+  }
 
   const counts = {
-    exams: await upsertMany(Exam, data.exams, "slug"),
-    careers: await upsertMany(Career, data.careers, "slug"),
-    colleges: await upsertMany(College, data.colleges, "slug"),
-    scholarships: await upsertMany(Scholarship, data.scholarships, "slug"),
-    outcomes: await upsertMany(Outcome, data.outcomes, "careerSlug"),
-    roadmaps: await upsertMany(Roadmap, data.roadmaps, "careerSlug"),
+    exams: await upsertMany(Exam, merged.exams, "slug"),
+    careers: await upsertMany(Career, merged.careers, "slug"),
+    colleges: await upsertMany(College, merged.colleges, "slug"),
+    scholarships: await upsertMany(Scholarship, merged.scholarships, "slug"),
+    outcomes: await upsertMany(Outcome, merged.outcomes, "careerSlug"),
+    roadmaps: await upsertMany(Roadmap, merged.roadmaps, "careerSlug"),
   };
 
   console.log("Seed complete:", counts);

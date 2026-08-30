@@ -44,7 +44,7 @@ async function upsertColleges(docs: any[]) {
 
 async function main() {
   await connectDB();
-  const files = ["seed.json", "seed2.json", "seed3.json"];
+  const files = ["seed.json", "seed2.json", "seed3.json", "seed4.json"];
   const merged: SeedFile = {
     exams: [],
     careers: [],

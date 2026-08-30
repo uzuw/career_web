@@ -1,0 +1,55 @@
+# ─── OS / editor ───────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+.project
+*.iml
+
+# ─── Secrets / env (keep .env.example tracked) ─────────────────
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.json
+
+# ─── Node / JS (stack may use this) ───────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.next/
+.out/
+dist/
+build/
+.cache/
+.vercel/
+.turbo/
+*.tsbuildinfo
+
+# ─── Python (stack may use this) ──────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ─── Logs ─────────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Local scratch / data dumps not meant to be tracked ───────
+*.tmp
+.cache/
+.DS_Store

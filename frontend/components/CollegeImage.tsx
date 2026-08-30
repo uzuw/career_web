@@ -40,9 +40,10 @@ function initials(name: string): string {
 export function CollegeImage({ name, slug, affiliation, logoUrl, className }: { name: string; slug?: string; affiliation: string; logoUrl?: string; className?: string }) {
   const [errored, setErrored] = useState(false);
 
-  // Prefer a local asset (downloaded into /public/assets/college/{slug}.png),
-  // then a curated corpus logoUrl, else the deterministic gradient tile.
-  const src = !errored && (slug ? `/assets/college/${slug}.png` : null) ? `/assets/college/${slug}.png` : logoUrl && !errored ? logoUrl : null;
+  // Only render an <img> when a verified logoUrl is provided (set in the corpus
+  // for colleges with a downloaded /assets/college/{slug}.png). Otherwise we go
+  // straight to the gradient tile — no 404/broken-image for missing files.
+  const src = !errored && logoUrl ? logoUrl : null;
   const [a, b] = palette[affiliation] ?? palette.Other;
 
   if (src) {

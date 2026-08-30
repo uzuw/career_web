@@ -53,4 +53,19 @@ describe("science corpus size (after growth)", () => {
     // All Science careers should now be mapped to at least one offering college.
     expect(orphans).toEqual([]);
   });
+
+  it("has foreign-affiliated IT colleges with a declared awarding partner", async () => {
+    const foreign = await College.find({ affiliation: "Foreign" }).lean();
+    expect(foreign.length).toBeGreaterThanOrEqual(10);
+    for (const c of foreign as any[]) {
+      expect(c.foreignPartner && c.foreignPartner.length > 0).toBe(true);
+    }
+  });
+
+  it("bsc-cs is offered by both foreign-affiliated and TU private IT colleges", async () => {
+    const foreign = await College.find({ affiliation: "Foreign", programs: "bsc-cs" }).lean();
+    const tuPrivate = await College.find({ affiliation: "TU", type: "private", programs: "bsc-cs" }).lean();
+    expect(foreign.length).toBeGreaterThanOrEqual(10);
+    expect(tuPrivate.length).toBeGreaterThanOrEqual(2);
+  });
 });

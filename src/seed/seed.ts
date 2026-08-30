@@ -26,9 +26,25 @@ async function upsertMany(model: any, docs: any[], key: string) {
   return n;
 }
 
+// Colleges merge their `programs` array (addToSet) so supplemental seed files
+// can extend existing colleges without re-listing all programs.
+async function upsertColleges(docs: any[]) {
+  let n = 0;
+  for (const doc of docs) {
+    const { programs, ...rest } = doc;
+    const update: any = { $set: rest };
+    if (Array.isArray(programs) && programs.length) {
+      update.$addToSet = { programs: { $each: programs } };
+    }
+    await College.findOneAndUpdate({ slug: doc.slug }, update, { upsert: true, new: true, setDefaultsOnInsert: true });
+    n++;
+  }
+  return n;
+}
+
 async function main() {
   await connectDB();
-  const files = ["seed.json", "seed2.json"];
+  const files = ["seed.json", "seed2.json", "seed3.json"];
   const merged: SeedFile = {
     exams: [],
     careers: [],
@@ -52,7 +68,7 @@ async function main() {
   const counts = {
     exams: await upsertMany(Exam, merged.exams, "slug"),
     careers: await upsertMany(Career, merged.careers, "slug"),
-    colleges: await upsertMany(College, merged.colleges, "slug"),
+    colleges: await upsertColleges(merged.colleges),
     scholarships: await upsertMany(Scholarship, merged.scholarships, "slug"),
     outcomes: await upsertMany(Outcome, merged.outcomes, "careerSlug"),
     roadmaps: await upsertMany(Roadmap, merged.roadmaps, "careerSlug"),

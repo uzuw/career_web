@@ -3,6 +3,22 @@
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is SemVer (MAJOR.MINOR.PATCH).
 
+## [0.4.0] - 2026-08-30
+
+### Added (map orphan careers to colleges — feature/map-orphan-careers)
+- Added `seed3.json` mapping the 6 previously-unlinked Science careers to real colleges:
+  - **KU School of Science** (Dhulikhel): Biotechnology, Environmental Science, Data Science/AI, B.Sc. CS.
+  - **TU IOST central campuses** (Kirtipur): Microbiology, Statistics, Environmental Science (new `tu-iost-entrance` exam).
+  - **KUSMS** (KU) + KU medical affiliates (Nobel, Birat, KMC, Devdaha, Nepalgunj, Lumbini, KIST): BPT.
+  - **Gandaki College of Engineering & Science** (PU, Pokhara): Civil, Computer, Environmental Science.
+- Seed script upgraded: `upsertColleges` now **merges** `programs` via `$addToSet` so supplemental seed files extend existing colleges without re-listing all programs; loads seed.json + seed2.json + seed3.json.
+- Fixed a data bug: Birat Medical College lacked coords; now a full cited record.
+- Corpus test strengthened: all 25 Science careers must link to ≥1 offering college (known-orphan allowlist removed). Geo-bounds test now validates every college.
+
+### Notes
+- Management stream still deferred (per user).
+- Microbiology/Statistics are mapped to TU central IOST hub; specific constituent campuses (Amrit, Tri-Chandra, St. Xavier's) can be added later as individual records.
+
 ## [0.3.0] - 2026-08-30
 
 ### Added (grow science corpus — feature/grow-science-corpus)

@@ -36,7 +36,7 @@ export default async function Home() {
               What next after <span className="gradient-text">+2 Science?</span>
             </h1>
             <p className="mt-4 max-w-md text-[15px]" style={{ color: "var(--mut)" }}>
-              Clear, verified guidance on careers, colleges, and entrance exams — so you don&apos;t have to guess, and you don&apos;t have to leave.
+              Clear, verified guidance on careers, colleges, and entrance exams — so you don&apos;t have to guess, and you don&apos;t have to leave. <span className="font-semibold" style={{ color: "var(--ink)" }}>Shaping the future of every Nepali sprout.</span>
             </p>
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -83,14 +83,17 @@ export default async function Home() {
         ))}
       </section>
 
-      {/* FEATURED CAREERS */}
+      {/* FEATURED CAREERS — fixed trio + View more */}
       <section className="pb-10">
         <div className="mb-4 flex items-end justify-between">
           <h2 className="font-grotesk text-2xl font-bold">Explore careers</h2>
-          <Link href="/careers" className="flex items-center gap-1 text-sm font-semibold text-brand">All careers <ArrowRight size={15} /></Link>
+          <Link href="/careers" className="flex items-center gap-1 text-sm font-semibold text-brand">View more <ArrowRight size={15} /></Link>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {careers.slice(0, 9).map((c) => <CareerCard key={c.slug} career={c} />)}
+          {(["bsc-cs", "bsc-nursing", "architecture"]
+            .map((slug) => careers.find((c) => c.slug === slug))
+            .filter(Boolean)
+            .map((c: any) => <CareerCard key={c.slug} career={c} />))}
         </div>
       </section>
 

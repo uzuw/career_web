@@ -19,11 +19,14 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b backdrop-blur-md" style={{ background: "color-mix(in srgb, var(--bg) 85%, transparent)", borderColor: "var(--line)" }}>
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
-        <Link href="/" className="flex items-center gap-2 font-grotesk text-lg font-bold tracking-tight">
+        <Link href="/" className="flex items-center gap-2.5">
           <span className="grid h-9 w-9 place-items-center rounded-xl gradient-btn text-white">
             <GraduationCap size={18} />
           </span>
-          <span>College<span className="text-brand">Choices</span></span>
+          <span className="leading-tight">
+            <span className="block font-grotesk text-lg font-bold tracking-tight">Mero<span className="text-brand">Bhawishya</span></span>
+            <span className="block text-[10px] font-medium" style={{ color: "var(--mut)" }}>shaping future of every nepali sprout</span>
+          </span>
         </Link>
 
         <div className="hidden items-center gap-7 text-sm md:flex" style={{ color: "var(--mut)" }}>

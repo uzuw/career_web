@@ -8,8 +8,8 @@ const grotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-grotesk", 
 const sans = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-sans", weight: ["400", "500", "600", "700", "800"] });
 
 export const metadata: Metadata = {
-  title: "College Choices Nepal",
-  description: "Clear, verified guidance on careers, colleges, and entrance exams for +2 Science graduates in Nepal.",
+  title: "MeroBhawishya — College & Career Choices Nepal",
+  description: "Clear, verified guidance on careers, colleges, and entrance exams for +2 Science graduates in Nepal. Shaping the future of every Nepali sprout.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

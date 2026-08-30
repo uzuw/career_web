@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Banknote } from "lucide-react";
+import { ArrowRight, Banknote, Star } from "lucide-react";
 import type { Career } from "@/lib/api";
 
 function salary(c: Career): string {
@@ -15,8 +15,13 @@ export function CareerCard({ career }: { career: Career }) {
     ? career.subjectCombo
     : career.subjectCombo ? career.subjectCombo.split("+") : [];
   return (
-    <Link href={`/careers/${career.slug}`} className="bento group block p-5 transition hover:-translate-y-0.5 hover:shadow-brand">
-      <div className="mb-3 flex items-start justify-between gap-3">
+    <Link href={`/careers/${career.slug}`} className="bento group relative block p-5 transition hover:-translate-y-0.5 hover:shadow-brand">
+      {career.popular && (
+        <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-700 dark:bg-amber-500/15 dark:text-amber-400">
+          <Star size={11} className="fill-amber-500 text-amber-500" /> Popular
+        </span>
+      )}
+      <div className="mb-3 flex items-start justify-between gap-3 pr-16">
         <h3 className="font-grotesk text-base font-bold">{career.titleEn}</h3>
         <ArrowRight size={16} className="mt-1 shrink-0 opacity-0 transition group-hover:opacity-100" style={{ color: "var(--mut)" }} />
       </div>

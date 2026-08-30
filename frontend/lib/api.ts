@@ -12,6 +12,7 @@ export interface Career {
   subjectCombo?: string[] | string;
   minGpa?: number;
   salaryNp?: { rangeLow?: number; rangeHigh?: number; currency?: string; period?: string; confidence?: string; source?: string };
+  popular?: boolean;
   abroadVsNepal?: { nepalCost?: string; abroadCostEst?: string; roiNepal?: string; roiAbroad?: string; riskNotes?: string };
   educationPath?: string[];
   entranceExams?: string[];

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Globe, Banknote, GraduationCap } from "lucide-react";
 import { api } from "@/lib/api";
 import { CollegeImage } from "@/components/CollegeImage";
+import { CorpusUpdateButton } from "@/components/CorpusUpdateButton";
 
 export const dynamic = "force-dynamic";
 
@@ -63,6 +64,8 @@ export default async function CollegeDetail({ params }: { params: { slug: string
           Visit website <Globe size={15} />
         </a>
       )}
+
+      <CorpusUpdateButton slug={college.slug} name={college.name} />
     </div>
   );
 }

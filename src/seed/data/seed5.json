@@ -1,0 +1,190 @@
+{
+  "exams": [],
+  "careers": [],
+  "colleges": [],
+  "scholarships": [],
+  "outcomes": [],
+  "roadmaps": [
+    {
+      "careerSlug": "bsc-cs",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Math)", "duration": "2 yrs" },
+        { "type": "apply", "label": "Apply to B.Sc. CS / BCS (TU, KU, PU, foreign-affiliated)", "duration": "4 yrs", "notes": "Some campuses take IOE/KU entrance; many admit on +2 marks." },
+        { "type": "work", "label": "Junior developer / data roles or M.Sc. CS", "notes": "Strong local demand in IT; abroad MS common." }
+      ]
+    },
+    {
+      "careerSlug": "bsc-nursing",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio)", "duration": "2 yrs" },
+        { "type": "exam", "label": "Entrance exam (college / CEE)", "notes": "Some campuses via MECEE-BL equivalents." },
+        { "type": "study", "label": "B.Sc. Nursing", "duration": "4 yrs" },
+        { "type": "apply", "label": "Nepal Nursing Council license", "notes": "Required to practice." },
+        { "type": "work", "label": "Staff nurse / community health" }
+      ]
+    },
+    {
+      "careerSlug": "architecture",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Math)", "duration": "2 yrs" },
+        { "type": "exam", "label": "IOE entrance", "notes": "B.Arch only at Pulchowk (TU)." },
+        { "type": "study", "label": "B.Arch", "duration": "5 yrs" },
+        { "type": "apply", "label": "Architect license (NAA)", "notes": "Required for independent practice." },
+        { "type": "work", "label": "Architect / urban designer" }
+      ]
+    },
+    {
+      "careerSlug": "pharmacy",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio)", "duration": "2 yrs" },
+        { "type": "exam", "label": "Entrance exam", "notes": "TU/PU/KU B.Pharm." },
+        { "type": "study", "label": "B.Pharm", "duration": "4 yrs" },
+        { "type": "apply", "label": "Pharmacist license (Nepal Pharmacy Council)", "notes": "Required to dispense." },
+        { "type": "work", "label": "Hospital / retail / industry pharmacist" }
+      ]
+    },
+    {
+      "careerSlug": "veterinary",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio)", "duration": "2 yrs" },
+        { "type": "exam", "label": "AFU entrance (IAAS)", "notes": "Only vet college in Nepal." },
+        { "type": "study", "label": "BVSc & AH", "duration": "5 yrs" },
+        { "type": "apply", "label": "Veterinary license", "notes": "Required to practice." },
+        { "type": "work", "label": "Govt / private vet, livestock, public health" }
+      ]
+    },
+    {
+      "careerSlug": "computer-engineer",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Math)", "duration": "2 yrs" },
+        { "type": "exam", "label": "IOE entrance", "notes": "Admission to BE Computer." },
+        { "type": "study", "label": "BE Computer Engineering", "duration": "4 yrs" },
+        { "type": "work", "label": "Software / hardware engineer or M.Sc." }
+      ]
+    },
+    {
+      "careerSlug": "mechanical-engineer",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Math)", "duration": "2 yrs" },
+        { "type": "exam", "label": "IOE entrance", "notes": "Admission to BE Mechanical." },
+        { "type": "study", "label": "BE Mechanical Engineering", "duration": "4 yrs" },
+        { "type": "work", "label": "Manufacturing / automotive / energy" }
+      ]
+    },
+    {
+      "careerSlug": "electrical-engineer",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Math)", "duration": "2 yrs" },
+        { "type": "exam", "label": "IOE entrance", "notes": "Admission to BE Electrical." },
+        { "type": "study", "label": "BE Electrical Engineering", "duration": "4 yrs" },
+        { "type": "work", "label": "Power / grid / electronics" }
+      ]
+    },
+    {
+      "careerSlug": "aerospace-engineer",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Math)", "duration": "2 yrs" },
+        { "type": "exam", "label": "IOE entrance (top rank)", "notes": "Aerospace only at Pulchowk, few seats." },
+        { "type": "study", "label": "BE Aerospace Engineering", "duration": "4 yrs" },
+        { "type": "work", "label": "Almost no local industry — research/teaching or study abroad" }
+      ]
+    },
+    {
+      "careerSlug": "bds",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio)", "duration": "2 yrs" },
+        { "type": "exam", "label": "MECEE-BL", "notes": "Dental entrance." },
+        { "type": "study", "label": "BDS", "duration": "4 yrs" },
+        { "type": "apply", "label": "Dental license (Nepal Medical Council)", "notes": "Required to practice." },
+        { "type": "work", "label": "Dental surgeon" }
+      ]
+    },
+    {
+      "careerSlug": "bph",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio)", "duration": "2 yrs" },
+        { "type": "exam", "label": "Entrance exam", "notes": "TU/PU/KU BPH." },
+        { "type": "study", "label": "Bachelor in Public Health", "duration": "4 yrs" },
+        { "type": "work", "label": "NGO / gov / research / MPH" }
+      ]
+    },
+    {
+      "careerSlug": "microbiology",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio)", "duration": "2 yrs" },
+        { "type": "study", "label": "B.Sc. Microbiology", "duration": "4 yrs" },
+        { "type": "study", "label": "M.Sc. / research", "notes": "Lab & quality roles." }
+      ]
+    },
+    {
+      "careerSlug": "forestry",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio)", "duration": "2 yrs" },
+        { "type": "exam", "label": "AFU entrance (FAC)", "notes": "B.Sc. Forestry." },
+        { "type": "study", "label": "B.Sc. Forestry", "duration": "4 yrs" },
+        { "type": "work", "label": "Forest officer / conservation" }
+      ]
+    },
+    {
+      "careerSlug": "bsc-fisheries",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio)", "duration": "2 yrs" },
+        { "type": "exam", "label": "AFU entrance (FAC)", "notes": "B.Sc. Fisheries." },
+        { "type": "study", "label": "B.Sc. Fisheries", "duration": "4 yrs" },
+        { "type": "work", "label": "Aquaculture / research" }
+      ]
+    },
+    {
+      "careerSlug": "ayurveda",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio)", "duration": "2 yrs" },
+        { "type": "exam", "label": "Entrance (Nepal Sanskrit Univ / CTEVT)", "notes": "BAMS." },
+        { "type": "study", "label": "BAMS", "duration": "5 yrs" },
+        { "type": "apply", "label": "Ayurvedic license", "notes": "Required to practice." },
+        { "type": "work", "label": "Ayurvedic physician" }
+      ]
+    },
+    {
+      "careerSlug": "statistics",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Math)", "duration": "2 yrs" },
+        { "type": "study", "label": "B.Sc. Statistics", "duration": "4 yrs" },
+        { "type": "work", "label": "Data / actuarial / research or M.Sc." }
+      ]
+    },
+    {
+      "careerSlug": "biotechnology",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio)", "duration": "2 yrs" },
+        { "type": "study", "label": "B.Sc. Biotechnology", "duration": "4 yrs" },
+        { "type": "study", "label": "M.Sc. / research", "notes": "Pharma & lab roles." }
+      ]
+    },
+    {
+      "careerSlug": "environmental-science",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Bio/Math)", "duration": "2 yrs" },
+        { "type": "study", "label": "B.Sc. Environmental Science", "duration": "4 yrs" },
+        { "type": "work", "label": "EIA / NGO / gov / M.Sc." }
+      ]
+    },
+    {
+      "careerSlug": "electronics-comm-engineer",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Math)", "duration": "2 yrs" },
+        { "type": "exam", "label": "IOE entrance", "notes": "Admission to BE Electronics & Comm." },
+        { "type": "study", "label": "BE Electronics & Communication", "duration": "4 yrs" },
+        { "type": "work", "label": "Telecom / embedded / VLSI" }
+      ]
+    },
+    {
+      "careerSlug": "geomatics-engineer",
+      "steps": [
+        { "type": "study", "label": "+2 Science (Math)", "duration": "2 yrs" },
+        { "type": "exam", "label": "IOE entrance", "notes": "Admission to BE Geomatics." },
+        { "type": "study", "label": "BE Geomatics Engineering", "duration": "4 yrs" },
+        { "type": "work", "label": "Surveying / GIS / remote sensing" }
+      ]
+    }
+  ]
+}

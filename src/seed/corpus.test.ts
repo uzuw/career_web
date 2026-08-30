@@ -47,19 +47,10 @@ describe("science corpus size (after growth)", () => {
     const careers = await Career.find({ stream: "Science" }).lean();
     const colleges = await College.find().lean();
     const offered = new Set(colleges.flatMap((c: any) => c.programs));
-    // Careers verified to exist but whose specific offering colleges are not yet
-    // mapped (need per-campus verification). Tracked, not asserted as linked.
-    const knownOrphans = new Set([
-      "microbiology",
-      "bpt",
-      "biotechnology",
-      "environmental-science",
-      "data-science-ai",
-      "statistics",
-    ]);
     const orphans = careers
       .filter((c: any) => !offered.has(c.slug))
       .map((c: any) => c.slug);
-    expect(orphans.sort()).toEqual([...knownOrphans].sort());
+    // All Science careers should now be mapped to at least one offering college.
+    expect(orphans).toEqual([]);
   });
 });

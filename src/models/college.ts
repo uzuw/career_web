@@ -1,6 +1,6 @@
 import { Schema, model, Document } from "mongoose";
 
-export type Affiliation = "TU" | "KU" | "PU" | "MU" | "Other";
+export type Affiliation = "TU" | "KU" | "PU" | "MU" | "Foreign" | "Other";
 export type CollegeType = "public" | "private" | "community";
 
 export interface ICollege extends Document {
@@ -8,6 +8,7 @@ export interface ICollege extends Document {
   slug: string;
   affiliation: Affiliation;
   type: CollegeType;
+  foreignPartner?: string; // awarding foreign university (Foreign affiliation)
   lat: number;
   lng: number;
   district: string;
@@ -29,8 +30,9 @@ const collegeSchema = new Schema<ICollege>(
   {
     name: { type: String, required: true },
     slug: { type: String, required: true, unique: true, index: true },
-    affiliation: { type: String, enum: ["TU", "KU", "PU", "MU", "Other"], required: true, index: true },
+    affiliation: { type: String, enum: ["TU", "KU", "PU", "MU", "Foreign", "Other"], required: true, index: true },
     type: { type: String, enum: ["public", "private", "community"], default: "private" },
+    foreignPartner: { type: String },
     lat: { type: Number, required: true },
     lng: { type: Number, required: true },
     district: { type: String, required: true },

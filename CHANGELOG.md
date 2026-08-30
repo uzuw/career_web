@@ -3,6 +3,19 @@
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is SemVer (MAJOR.MINOR.PATCH).
 
+## [0.5.0] - 2026-08-30
+
+### Added (foreign-affiliated + private IT colleges — feature/foreign-affiliated-colleges)
+- Extended `College` model: `Affiliation` enum gains `"Foreign"`; new `foreignPartner` field records the awarding overseas university (honesty-first).
+- Added `seed4.json` with **14 foreign-affiliated IT colleges** (Islington→London Met, Softwarica→Coventry, Herald→Wolverhampton, TBC→Leeds Beckett, ISMT→Sunderland, Informatics Pokhara→London Met, LBEF/Techspire→APU Malaysia, Texas/Phoenix→Lincoln Malaysia, Padmashree→Nilai Malaysia, MIT→Westcliff USA, Stamford, The London College) + **5 private TU-affiliated IT colleges** (Deerwalk, Prime, Texas Int'l).
+- Added `college-admission` exam record (no central entrance; +2 grades + college selection; UGC equivalency noted) so foreign/private IT colleges link coherently to `bsc-cs`.
+- `bsc-cs` now offered by 19 colleges (was 2) — directly addresses the "which IT college" confusion with foreign-vs-local options side by side.
+- Corpus test adds 2 assertions: ≥10 foreign colleges each declaring `foreignPartner`; `bsc-cs` offered by both Foreign and TU-private colleges.
+
+### Notes
+- Fees are total-program estimates (NPR) from public guides; marked estimate, verify per college.
+- Management stream still deferred. Foreign-affiliated records are Science/IT only so far.
+
 ## [0.4.0] - 2026-08-30
 
 ### Added (map orphan careers to colleges — feature/map-orphan-careers)

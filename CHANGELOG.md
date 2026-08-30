@@ -3,6 +3,25 @@
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is SemVer (MAJOR.MINOR.PATCH).
 
+## [0.6.0] - 2026-08-30
+
+### Added (frontend + corpus growth — feature/nextjs-frontend)
+- **Next.js + Tailwind frontend (MeroBhawishya)**: bento layout, dark mode (`next-themes`), Lucide icons, proper navbar, real API wiring.
+- Rebrand: app name **MeroBhawishya**, motto "shaping future of every nepali sprout".
+- Home "Explore careers" shows a fixed trio (Computer Science, Nursing, Architecture) + View more.
+- `/careers`: search, sort (popular / A–Z), ★ "Popular" badges (13 curated popular careers).
+- `/colleges`: search + filter by province and affiliation; dummy gradient+initials imagery (real photos deferred).
+- College detail: "Update our corpus" correction form → posts to `/api/flags` (review queue).
+- `/roadmaps` + per-career roadmap steps; corpus roadmaps grown **5 → 25** (every career has a path).
+- `Career` model gains `popular` boolean (indexed); `GET /api/roadmaps` list endpoint added.
+
+### Security
+- Bumped `next` 14.2.15 → **14.2.35** (patched; resolves Next.js advisory 2025-12-11).
+
+### Notes
+- Management stream still deferred (schema ready).
+- API contract tests: 10/10 passing.
+
 ## [0.5.0] - 2026-08-30
 
 ### Added (foreign-affiliated + private IT colleges — feature/foreign-affiliated-colleges)

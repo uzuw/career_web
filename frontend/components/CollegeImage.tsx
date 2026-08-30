@@ -2,51 +2,55 @@
 
 import { useState } from "react";
 import { ImageIcon } from "lucide-react";
-import { collegeImageUrl, googleImagesSearch } from "@/lib/collegeImages";
+import { googleImagesSearch } from "@/lib/collegeImages";
 
 const palette: Record<string, [string, string]> = {
-  TU: ["#1d4ed8", "#6366f1"],
-  KU: ["#0e7490", "#22d3ee"],
-  PU: ["#9333ea", "#6366f1"],
-  AFU: ["#15803d", "#84cc16"],
-  MU: ["#be123c", "#fb7185"],
-  Foreign: ["#b45309", "#f59e0b"],
-  Other: ["#475569", "#94a3b8"],
+  TU: ["#1e3a8a", "#3b82f6"],
+  KU: ["#065f46", "#10b981"],
+  PU: ["#7c2d12", "#f97316"],
+  MU: ["#581c87", "#a855f7"],
+  AFU: ["#14532d", "#22c55e"],
+  Foreign: ["#92400e", "#f59e0b"],
+  Other: ["#334155", "#64748b"],
 };
 
-function initials(name: string) {
-  const parts = name.replace(/[^a-zA-Z0-9 ]/g, "").split(/\s+/).filter(Boolean);
-  return (parts[0]?.[0] ?? "") + (parts[1]?.[0] ?? parts[0]?.[1] ?? "");
+function initials(name: string): string {
+  const words = name.replace(/[^A-Za-z ]/g, "").trim().split(/\s+/).filter(Boolean);
+  if (words.length === 0) return "?";
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return (words[0][0] + words[words.length - 1][0]).toUpperCase();
 }
 
-export function CollegeImage({ slug, name, affiliation, logoUrl, className }: { slug?: string; name: string; affiliation?: string; logoUrl?: string; className?: string }) {
-  const [a, b] = palette[affiliation ?? "Other"] ?? palette.Other;
-  const src = collegeImageUrl(logoUrl);
-  const [failed, setFailed] = useState(!src);
+export function CollegeImage({ name, slug, affiliation, logoUrl, className }: { name: string; slug?: string; affiliation: string; logoUrl?: string; className?: string }) {
+  const [errored, setErrored] = useState(false);
 
-  if (!src || failed) {
+  // Prefer a local asset (downloaded into /public/assets/college/{slug}.png),
+  // then a curated corpus logoUrl, else the deterministic gradient tile.
+  const src = !errored && (slug ? `/assets/college/${slug}.png` : null) ? `/assets/college/${slug}.png` : logoUrl && !errored ? logoUrl : null;
+  const [a, b] = palette[affiliation] ?? palette.Other;
+
+  if (src) {
     return (
-      <div className={`relative flex items-center justify-center ${className ?? ""}`} style={{ background: `linear-gradient(135deg, ${a}, ${b})` }}>
-        <span className="font-grotesk text-2xl font-bold text-white/90 drop-shadow">{initials(name).toUpperCase()}</span>
-        <a href={googleImagesSearch(name)} target="_blank" rel="noreferrer" className="absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-full bg-black/30 px-2 py-1 text-[10px] font-medium text-white/90 backdrop-blur hover:bg-black/50">
-          <ImageIcon size={11} /> Images
+      <div className={`relative ${className ?? ""}`}>
+        <img
+          src={src}
+          alt={name}
+          className="h-full w-full object-contain"
+          style={{ background: `linear-gradient(135deg, ${a}22, ${b}22)` }}
+          onError={() => setErrored(true)}
+        />
+        <a href={googleImagesSearch(name)} target="_blank" rel="noreferrer" className="absolute bottom-1.5 right-1.5 rounded-md bg-black/55 px-1.5 py-0.5 text-[10px] font-medium text-white hover:bg-black/75" title="Search more images on Google">
+          <ImageIcon size={11} className="inline" /> Images
         </a>
       </div>
     );
   }
 
   return (
-    <div className={`relative ${className ?? ""}`}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={name}
-        loading="lazy"
-        onError={() => setFailed(true)}
-        className="h-full w-full object-cover"
-      />
-      <a href={googleImagesSearch(name)} target="_blank" rel="noreferrer" className="absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-full bg-black/30 px-2 py-1 text-[10px] font-medium text-white/90 backdrop-blur hover:bg-black/50">
-        <ImageIcon size={11} /> Images
+    <div className={`relative flex items-center justify-center ${className ?? ""}`} style={{ background: `linear-gradient(135deg, ${a}, ${b})` }}>
+      <span className="font-grotesk text-2xl font-bold text-white/90">{initials(name)}</span>
+      <a href={googleImagesSearch(name)} target="_blank" rel="noreferrer" className="absolute bottom-1.5 right-1.5 rounded-md bg-black/30 px-1.5 py-0.5 text-[10px] font-medium text-white hover:bg-black/50" title="Search more images on Google">
+        <ImageIcon size={11} className="inline" /> Images
       </a>
     </div>
   );

@@ -88,16 +88,17 @@ async function main() {
   const popRes = await Career.updateMany({ slug: { $in: popularSlugs } }, { $set: { popular: true } });
   counts.popular = popRes.modifiedCount;
 
-  // Curated real college images (Wikimedia Commons, free-licensed).
+  // Curated real college images (downloaded into frontend/public/assets/college/{slug}.png).
+  // Missing files gracefully fall back to the gradient tile in CollegeImage.
   const collegeLogos: Record<string, string> = {
-    iom: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Tribhuvan_University_logo.svg/320px-Tribhuvan_University_logo.svg.png",
-    "tu-central": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Tribhuvan_University_logo.svg/320px-Tribhuvan_University_logo.svg.png",
-    "ku-school-of-engineering": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Kathmandu_University_logo.svg/320px-Kathmandu_University_logo.svg.png",
-    "ku-school-of-science": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Kathmandu_University_logo.svg/320px-Kathmandu_University_logo.svg.png",
-    "ku-school-of-medicine": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Kathmandu_University_logo.svg/320px-Kathmandu_University_logo.svg.png",
-    "ioe-pulchowk": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Institute_of_Engineering%2C_TU_logo.png/320px-Institute_of_Engineering%2C_TU_logo.png",
-    "afu-tu": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Agriculture_%26_Forestry_University_logo.png/320px-Agriculture_%26_Forestry_University_logo.png",
-    bpkihs: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/BPKIHS_logo.png/320px-BPKIHS_logo.png",
+    iom: "/assets/college/iom.png",
+    "tu-central": "/assets/college/tu-central.png",
+    "ku-school-of-engineering": "/assets/college/ku-school-of-engineering.png",
+    "ku-school-of-science": "/assets/college/ku-school-of-science.png",
+    "ku-school-of-medicine": "/assets/college/ku-school-of-medicine.png",
+    "ioe-pulchowk": "/assets/college/ioe-pulchowk.png",
+    "afu-tu": "/assets/college/afu-tu.png",
+    bpkihs: "/assets/college/bpkihs.png",
   };
   for (const [slug, url] of Object.entries(collegeLogos)) {
     await College.updateOne({ slug }, { $set: { logoUrl: url } });

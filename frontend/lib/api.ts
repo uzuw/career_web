@@ -31,6 +31,7 @@ export interface College {
   district?: string;
   province?: string;
   programs?: string[];
+  entranceRequired?: string;
   tuitionRange?: { low?: number; high?: number; currency?: string; period?: string };
   website?: string;
   logoUrl?: string;
@@ -41,10 +42,17 @@ export interface College {
 export interface Exam {
   slug: string;
   nameEn: string;
+  nameNp?: string;
   forCareer?: string[];
-  eligibility?: string;
-  appFeeNpr?: number;
-  officialUrl?: string;
+  eligibility: string;
+  syllabusUrl?: string;
+  scheduleMonth: string;
+  appFeeNpr: number;
+  cutoffPrev?: { range: string; year: string; source: string };
+  prepResources?: string[];
+  officialUrl: string;
+  sourceUrls?: string[];
+  verifiedDate?: string;
 }
 
 export interface Alumni {

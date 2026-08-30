@@ -12,7 +12,7 @@ export function CollegeCard({ college }: { college: College }) {
   return (
     <Link href={`/colleges/${college.slug}`} className="bento group block overflow-hidden transition hover:-translate-y-0.5 hover:shadow-brand">
       <div className="relative h-28 w-full overflow-hidden">
-        <CollegeImage name={college.name} affiliation={college.affiliation} logoUrl={college.logoUrl} />
+        <CollegeImage slug={college.slug} name={college.name} affiliation={college.affiliation} logoUrl={college.logoUrl} />
         <span
           className="absolute left-3 top-3 rounded-md px-2 py-0.5 text-[11px] font-semibold text-white"
           style={{ background: accent }}

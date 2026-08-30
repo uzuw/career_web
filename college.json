@@ -1,0 +1,250 @@
+[
+  {
+    "name": "Advanced College of Engineering and Management",
+    "location": "Lalitpur, Bagmati"
+  },
+  {
+    "name": "AFU Central Campus, Rampur",
+    "location": "Chitwan, Bagmati"
+  },
+  {
+    "name": "AFU Forestry Campus, Hetauda",
+    "location": "Makwanpur, Bagmati"
+  },
+  {
+    "name": "Birat Medical College",
+    "location": "Morang, Koshi"
+  },
+  {
+    "name": "BPKIHS",
+    "location": "Sunsari, Koshi"
+  },
+  {
+    "name": "Chitwan Engineering Campus (IOE)",
+    "location": "Chitwan, Bagmati"
+  },
+  {
+    "name": "Chitwan Medical College",
+    "location": "Chitwan, Bagmati"
+  },
+  {
+    "name": "College of Medical Sciences",
+    "location": "Chitwan, Bagmati"
+  },
+  {
+    "name": "College of Natural Resource Management, Bardibas",
+    "location": "Mahottari, Madhesh"
+  },
+  {
+    "name": "College of Natural Resource Management, Katari",
+    "location": "Udayapur, Koshi"
+  },
+  {
+    "name": "College of Natural Resource Management, Pakhribas",
+    "location": "Dhankuta, Koshi"
+  },
+  {
+    "name": "College of Natural Resource Management, Tikapur",
+    "location": "Kailali, Sudurpashchim"
+  },
+  {
+    "name": "Deerwalk Institute of Technology",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Devdaha Medical College",
+    "location": "Rupandehi, Lumbini"
+  },
+  {
+    "name": "Gandaki College of Engineering and Science",
+    "location": "Kaski, Gandaki"
+  },
+  {
+    "name": "Gandaki Medical College",
+    "location": "Kaski, Gandaki"
+  },
+  {
+    "name": "Herald College Kathmandu",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Himalaya College of Engineering",
+    "location": "Lalitpur, Bagmati"
+  },
+  {
+    "name": "Informatics College Pokhara",
+    "location": "Kaski, Gandaki"
+  },
+  {
+    "name": "Institute of Medicine (IOM)",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Islington College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "ISMT College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Janaki Medical College",
+    "location": "Dhanusha, Madhesh"
+  },
+  {
+    "name": "Kantipur Dental College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Kantipur Engineering College",
+    "location": "Lalitpur, Bagmati"
+  },
+  {
+    "name": "Kathmandu Engineering College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Kathmandu Medical College (KMC)",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Kathmandu University School of Engineering",
+    "location": "Kavrepalanchok, Bagmati"
+  },
+  {
+    "name": "Kathmandu University School of Medical Sciences (KUSMS)",
+    "location": "Kavrepalanchok, Bagmati"
+  },
+  {
+    "name": "Kathmandu University School of Science",
+    "location": "Kavrepalanchok, Bagmati"
+  },
+  {
+    "name": "Khwopa College of Engineering",
+    "location": "Bhaktapur, Bagmati"
+  },
+  {
+    "name": "KIST Medical College",
+    "location": "Lalitpur, Bagmati"
+  },
+  {
+    "name": "LBEF Campus",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Lumbini Medical College",
+    "location": "Palpa, Lumbini"
+  },
+  {
+    "name": "Manipal College of Medical Sciences",
+    "location": "Kaski, Gandaki"
+  },
+  {
+    "name": "Manmohan Memorial Institute of Health Sciences",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "MIT College Nepal",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "National College of Engineering",
+    "location": "Lalitpur, Bagmati"
+  },
+  {
+    "name": "Nepal Army Institute of Health Sciences (NAIHS)",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Nepal Ayurved Medical College",
+    "location": "Parsa, Madhesh"
+  },
+  {
+    "name": "Nepal Engineering College",
+    "location": "Bhaktapur, Bagmati"
+  },
+  {
+    "name": "Nepal Medical College (NMC)",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Nepalgunj Medical College",
+    "location": "Banke, Lumbini"
+  },
+  {
+    "name": "Nobel Medical College",
+    "location": "Morang, Koshi"
+  },
+  {
+    "name": "Padmashree College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Paschimanchal Campus (IOE)",
+    "location": "Kaski, Gandaki"
+  },
+  {
+    "name": "Patan Academy of Health Sciences",
+    "location": "Lalitpur, Bagmati"
+  },
+  {
+    "name": "People's Dental College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Phoenix College of Management",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Prime College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Pulchowk Campus (IOE)",
+    "location": "Lalitpur, Bagmati"
+  },
+  {
+    "name": "Purwanchal Campus (IOE)",
+    "location": "Sunsari, Koshi"
+  },
+  {
+    "name": "Scheer Memorial Nursing College",
+    "location": "Kavrepalanchok, Bagmati"
+  },
+  {
+    "name": "Softwarica College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Stamford College Kathmandu",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Techspire College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Texas College of Management & IT (TEXAS)",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Texas International College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "Thapathali Campus (IOE)",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "The British College",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "The London College, Kathmandu",
+    "location": "Kathmandu, Bagmati"
+  },
+  {
+    "name": "TU Institute of Science & Technology (Central Campuses)",
+    "location": "Kathmandu, Bagmati"
+  }
+]

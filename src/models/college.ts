@@ -21,6 +21,7 @@ export interface ICollege extends Document {
   scholarships: string[]; // Scholarship.slug
   website?: string;
   logoUrl?: string; // curated campus/logo image (Wikimedia or other free-licensed URL)
+  geoSource?: "curated" | "photon" | "photon-retry" | "seed"; // how lat/lng were obtained
   sourceUrls: string[];
   verifiedDate: Date;
   createdAt: Date;
@@ -51,6 +52,7 @@ const collegeSchema = new Schema<ICollege>(
     scholarships: { type: [String], default: [] },
     website: { type: String },
     logoUrl: { type: String },
+    geoSource: { type: String },
     sourceUrls: { type: [String], required: true },
     verifiedDate: { type: Date, required: true },
   },

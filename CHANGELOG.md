@@ -3,6 +3,21 @@
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is SemVer (MAJOR.MINOR.PATCH).
 
+## [0.3.0] - 2026-08-30
+
+### Added (grow science corpus — feature/grow-science-corpus)
+- Expanded Science corpus via `src/seed/data/seed2.json` (loaded alongside seed.json by the seed script):
+  - **6 new careers**: B.Sc. Fisheries, BPT (Physiotherapy), Biotechnology, Environmental Science, Data Science/AI, Statistics.
+  - **19 new colleges**: AFU Central Campus Rampur + Hetauda Forestry + 4 Colleges of Natural Resource Management (Katari, Pakhribas, Tikapur, Bardibas); full medical-college list with verified affiliations — KIST, Gandaki, Janaki, NAIHS, Nepalgunj, Devdaha, Lumbini, Kantipur Dental, Scheer, People's Dental, Manmohan, Nepal Ayurved; Nepal Engineering College (PU).
+  - **AFU entrance exam** linking agriculture/forestry/vet/fisheries careers.
+  - **3 new roadmaps** (BPT, Data Science/AI, Agriculture) + 2 outcome records.
+- Seed script now merges `seed.json` + `seed2.json` (idempotent upserts).
+- Corpus test (`src/seed/corpus.test.ts`, 7 tests) asserts size + integrity: ≥25 careers, ≥35 colleges, AFU + full medical list present, AFU exam linked, new roadmaps present, and a tracked allowlist of careers not yet mapped to specific colleges (microbiology, bpt, biotech, env sci, data sci, statistics) — flagged for future per-campus verification rather than fabricated links.
+
+### Notes
+- Management stream still deferred (per user).
+- 6 careers exist but lack verified offering-college mapping; tracked as known gaps, not asserted.
+
 ## [0.2.0] - 2026-08-30
 
 ### Added (backend scaffold — feature/backend-scaffold)

@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
-import { MapPin, Search } from "lucide-react";
+import { MapPin, Search, Satellite, Map as MapIcon } from "lucide-react";
 import type { College } from "@/lib/api";
 
 const palette: Record<string, string> = {
@@ -16,6 +15,7 @@ export function CollegeMap({ colleges }: { colleges: College[] }) {
   const [province, setProvince] = useState("All");
   const [aff, setAff] = useState("All");
   const [selected, setSelected] = useState<string | null>(null);
+  const [satellite, setSatellite] = useState(false);
 
   const provinces = ["All", ...Array.from(new Set(colleges.map((c) => c.province).filter(Boolean) as string[])).sort()];
   const affiliations = ["All", ...Array.from(new Set(colleges.map((c) => c.affiliation))).sort()];
@@ -38,7 +38,6 @@ export function CollegeMap({ colleges }: { colleges: College[] }) {
     (async () => {
       const mod = await import("leaflet");
       await import("leaflet/dist/leaflet.css");
-      // Fix default marker icon paths in bundlers.
       const icon = (mod as any).default ?? mod;
       const url = (n: string) => `https://unpkg.com/leaflet@1.9.4/dist/images/${n}`;
       icon.Icon.Default.mergeOptions({ iconRetinaUrl: url("marker-icon-2x.png"), iconUrl: url("marker-icon.png"), shadowUrl: url("marker-shadow.png") });
@@ -64,12 +63,23 @@ export function CollegeMap({ colleges }: { colleges: College[] }) {
         <select value={aff} onChange={(e) => setAff(e.target.value)} className="rounded-lg border px-3 py-2 text-sm" style={{ borderColor: "var(--line)", background: "var(--panel)" }}>
           {affiliations.map((a) => <option key={a} value={a}>{a === "All" ? "All affiliations" : a}</option>)}
         </select>
+
+        {/* map / satellite toggle */}
+        <div className="flex overflow-hidden rounded-lg border" style={{ borderColor: "var(--line)" }}>
+          <button onClick={() => setSatellite(false)} className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition ${!satellite ? "text-white" : ""}`} style={!satellite ? { background: "var(--brand)" } : { background: "var(--panel)", color: "var(--mut)" }}>
+            <MapIcon size={14} /> Map
+          </button>
+          <button onClick={() => setSatellite(true)} className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition ${satellite ? "text-white" : ""}`} style={satellite ? { background: "var(--brand)" } : { background: "var(--panel)", color: "var(--mut)" }}>
+            <Satellite size={14} /> Satellite
+          </button>
+        </div>
+
         <span className="text-sm" style={{ color: "var(--mut)" }}>{filtered.length} shown</span>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
         <div className="bento h-[60vh] overflow-hidden p-0 lg:col-span-2">
-          <MapView colleges={filtered} selected={selected} onSelect={setSelected} L={L} />
+          <MapView colleges={filtered} selected={selected} onSelect={setSelected} satellite={satellite} L={L} />
         </div>
         <div className="bento h-[60vh] overflow-auto p-3">
           <div className="font-grotesk text-sm font-bold mb-2">Colleges on map</div>
@@ -90,26 +100,44 @@ export function CollegeMap({ colleges }: { colleges: College[] }) {
   );
 }
 
-function MapView({ colleges, selected, onSelect, L }: { colleges: College[]; selected: string | null; onSelect: (s: string) => void; L: any }) {
+function MapView({ colleges, selected, onSelect, satellite, L }: { colleges: College[]; selected: string | null; onSelect: (s: string) => void; satellite: boolean; L: any }) {
   const ref = useRef<any>(null);
   const mapRef = useRef<any>(null);
+  const markersRef = useRef<Record<string, any>>({});
+  const baseRef = useRef<any>(null);
 
   useEffect(() => {
     if (!L || mapRef.current) return;
     const map = L.map(ref.current).setView(NEPAL_CENTER, 7);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 18,
-    }).addTo(map);
     mapRef.current = map;
     return () => { map.remove(); mapRef.current = null; };
   }, [L]);
 
-  // (Re)draw markers when filtered list or selection changes.
+  // Base tile layer (OSM <-> Esri satellite). Swapped on toggle; never stacks.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !L) return;
+    if (baseRef.current) map.removeLayer(baseRef.current);
+    const layer =
+      satellite
+        ? L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+            attribution: "Tiles &copy; Esri — Source: Esri, Maxar, Earthstar Geographics",
+            maxZoom: 19,
+          })
+        : L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19,
+          });
+    layer.addTo(map);
+    baseRef.current = layer;
+  }, [satellite, L]);
+
+  // (Re)draw markers + fit bounds when the filtered list changes.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !L) return;
     map.eachLayer((l: any) => { if (l instanceof L.Marker) map.removeLayer(l); });
+    markersRef.current = {};
     const bounds: [number, number][] = [];
     for (const c of colleges) {
       if (typeof c.lat !== "number" || typeof c.lng !== "number") continue;
@@ -120,10 +148,26 @@ function MapView({ colleges, selected, onSelect, L }: { colleges: College[]; sel
       }).addTo(map);
       marker.bindPopup(`<div style="min-width:160px"><div style="font-weight:700;margin-bottom:4px">${c.name}</div><div style="font-size:12px;color:#555">${[c.district, c.province, c.affiliation].filter(Boolean).join(" · ")}</div><a href="/colleges/${c.slug}" style="color:#4f46e5;font-size:12px">View →</a></div>`);
       marker.on("click", () => onSelect(c.slug));
+      markersRef.current[c.slug] = marker;
       bounds.push([c.lat, c.lng]);
     }
     if (bounds.length) map.fitBounds(bounds, { padding: [30, 30], maxZoom: 12 });
-  }, [colleges, selected, L]);
+  }, [colleges, L]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Fly to + open popup when a college is selected (from marker or side list).
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !L || !selected) return;
+    const marker = markersRef.current[selected];
+    if (!marker) return;
+    map.flyTo(marker.getLatLng(), 14, { duration: 1.2 });
+    marker.openPopup();
+    // refresh highlight (selected marker grows)
+    for (const [slug, m] of Object.entries(markersRef.current)) {
+      const on = slug === selected;
+      m.setStyle({ radius: on ? 9 : 6, weight: on ? 3 : 2 });
+    }
+  }, [selected, L]);
 
   return <div ref={ref} className="h-full w-full" />;
 }

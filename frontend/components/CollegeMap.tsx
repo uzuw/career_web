@@ -146,7 +146,7 @@ function MapView({ colleges, selected, onSelect, satellite, L }: { colleges: Col
         radius: c.slug === selected ? 9 : 6,
         color, fillColor: color, fillOpacity: 0.85, weight: 2,
       }).addTo(map);
-      marker.bindPopup(`<div style="min-width:160px"><div style="font-weight:700;margin-bottom:4px">${c.name}</div><div style="font-size:12px;color:#555">${[c.district, c.province, c.affiliation].filter(Boolean).join(" · ")}</div><a href="/colleges/${c.slug}" style="color:#4f46e5;font-size:12px">View →</a></div>`);
+      marker.bindPopup(`<div style="min-width:180px"><div style="font-weight:700;margin-bottom:4px">${c.name}</div><div style="font-size:12px;color:#555">${[c.district, c.province, c.affiliation].filter(Boolean).join(" · ")}</div><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><a href="/colleges/${c.slug}" style="color:#4f46e5;font-size:12px">View →</a><a href="https://www.google.com/maps/search/?api=1&query=${c.lat},${c.lng}" target="_blank" rel="noreferrer" style="color:#4285F4;font-size:12px">Google Maps</a><a href="https://maps.apple.com/?q=${encodeURIComponent(c.name)}&ll=${c.lat},${c.lng}" target="_blank" rel="noreferrer" style="color:#555;font-size:12px">Apple Maps</a></div></div>`);
       marker.on("click", () => onSelect(c.slug));
       markersRef.current[c.slug] = marker;
       bounds.push([c.lat, c.lng]);

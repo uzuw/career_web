@@ -38,6 +38,12 @@ export default async function CollegeDetail({ params }: { params: { slug: string
             <span className="flex items-center gap-1"><MapPin size={14} /> {college.district ?? college.province ?? "Nepal"}</span>
             {college.foreignPartner && <span className="flex items-center gap-1" style={{ color: "#d97706" }}><Globe size={14} /> {college.foreignPartner}</span>}
             {college.type && <span className="capitalize">{college.type}</span>}
+            {typeof college.lat === "number" && typeof college.lng === "number" && (
+              <span className="flex items-center gap-2">
+                <a href={`https://www.google.com/maps/search/?api=1&query=${college.lat},${college.lng}`} target="_blank" rel="noreferrer" className="font-medium hover:underline" style={{ color: "#4285F4" }}>Google Maps</a>
+                <a href={`https://maps.apple.com/?q=${encodeURIComponent(college.name)}&ll=${college.lat},${college.lng}`} target="_blank" rel="noreferrer" className="font-medium hover:underline" style={{ color: "var(--mut)" }}>Apple Maps</a>
+              </span>
+            )}
           </div>
           {college.tuitionRange && (
             <div className="mt-3 flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#16a34a" }}>

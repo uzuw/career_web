@@ -33,6 +33,7 @@ export interface College {
   programs?: string[];
   tuitionRange?: { low?: number; high?: number; currency?: string; period?: string };
   website?: string;
+  logoUrl?: string;
   sourceUrls?: string[];
   verifiedDate?: string;
 }
@@ -44,6 +45,17 @@ export interface Exam {
   eligibility?: string;
   appFeeNpr?: number;
   officialUrl?: string;
+}
+
+export interface Alumni {
+  _id?: string;
+  careerSlug?: string;
+  collegeSlug?: string;
+  author?: string;
+  snippet: string;
+  sentiment?: "positive" | "mixed" | "caution";
+  sourceUrl: string;
+  sourceName: string;
 }
 
 export interface Roadmap {
@@ -66,6 +78,20 @@ export const api = {
   exams: () => get<Exam[]>("/api/exams"),
   roadmaps: () => get<Roadmap[]>("/api/roadmaps"),
   roadmap: (careerSlug: string) => get<Roadmap>(`/api/roadmaps/${careerSlug}`),
+  alumni: (params?: { careerSlug?: string; collegeSlug?: string }) => {
+    const q = new URLSearchParams();
+    if (params?.careerSlug) q.set("careerSlug", params.careerSlug);
+    if (params?.collegeSlug) q.set("collegeSlug", params.collegeSlug);
+    const qs = q.toString();
+    return get<Alumni[]>(`/api/alumni${qs ? `?${qs}` : ""}`);
+  },
+  randomAlumni: (params?: { careerSlug?: string; collegeSlug?: string }) => {
+    const q = new URLSearchParams();
+    if (params?.careerSlug) q.set("careerSlug", params.careerSlug);
+    if (params?.collegeSlug) q.set("collegeSlug", params.collegeSlug);
+    const qs = q.toString();
+    return get<Alumni>(`/api/alumni/random${qs ? `?${qs}` : ""}`);
+  },
   eligibility: (params: Record<string, string>) => {
     const qs = new URLSearchParams(params).toString();
     return get<any>(`/api/eligibility?${qs}`);

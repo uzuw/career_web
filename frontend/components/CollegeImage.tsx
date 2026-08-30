@@ -4,6 +4,22 @@ import { useState } from "react";
 import { ImageIcon } from "lucide-react";
 import { googleImagesSearch } from "@/lib/collegeImages";
 
+function ImagesLink({ name }: { name: string }) {
+  // span (not <a>) to avoid nested-anchor when CollegeImage is inside a <Link> card.
+  return (
+    <span
+      role="link"
+      tabIndex={0}
+      onClick={(e) => { e.stopPropagation(); window.open(googleImagesSearch(name), "_blank", "noopener"); }}
+      onKeyDown={(e) => { if (e.key === "Enter") { e.stopPropagation(); window.open(googleImagesSearch(name), "_blank", "noopener"); } }}
+      className="absolute bottom-1.5 right-1.5 cursor-pointer rounded-md bg-black/55 px-1.5 py-0.5 text-[10px] font-medium text-white hover:bg-black/75"
+      title="Search more images on Google"
+    >
+      <ImageIcon size={11} className="inline" /> Images
+    </span>
+  );
+}
+
 const palette: Record<string, [string, string]> = {
   TU: ["#1e3a8a", "#3b82f6"],
   KU: ["#065f46", "#10b981"],
@@ -39,9 +55,7 @@ export function CollegeImage({ name, slug, affiliation, logoUrl, className }: { 
           style={{ background: `linear-gradient(135deg, ${a}22, ${b}22)` }}
           onError={() => setErrored(true)}
         />
-        <a href={googleImagesSearch(name)} target="_blank" rel="noreferrer" className="absolute bottom-1.5 right-1.5 rounded-md bg-black/55 px-1.5 py-0.5 text-[10px] font-medium text-white hover:bg-black/75" title="Search more images on Google">
-          <ImageIcon size={11} className="inline" /> Images
-        </a>
+        <ImagesLink name={name} />
       </div>
     );
   }
@@ -49,9 +63,7 @@ export function CollegeImage({ name, slug, affiliation, logoUrl, className }: { 
   return (
     <div className={`relative flex items-center justify-center ${className ?? ""}`} style={{ background: `linear-gradient(135deg, ${a}, ${b})` }}>
       <span className="font-grotesk text-2xl font-bold text-white/90">{initials(name)}</span>
-      <a href={googleImagesSearch(name)} target="_blank" rel="noreferrer" className="absolute bottom-1.5 right-1.5 rounded-md bg-black/30 px-1.5 py-0.5 text-[10px] font-medium text-white hover:bg-black/50" title="Search more images on Google">
-        <ImageIcon size={11} className="inline" /> Images
-      </a>
+      <ImagesLink name={name} />
     </div>
   );
 }

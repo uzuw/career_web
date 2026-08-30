@@ -35,6 +35,7 @@ export interface ICareer extends Document {
   skills: string[];
   abroadVsNepal: IAbroadVsNepal;
   salaryNp?: ISalary;
+  popular?: boolean;
   sourceUrls: string[];
   verifiedDate: Date;
   createdAt: Date;
@@ -79,6 +80,7 @@ const careerSchema = new Schema<ICareer>(
     skills: { type: [String], default: [] },
     abroadVsNepal: { type: abroadSchema, required: true },
     salaryNp: { type: salarySchema },
+    popular: { type: Boolean, default: false, index: true },
     sourceUrls: { type: [String], required: true },
     verifiedDate: { type: Date, required: true },
   },

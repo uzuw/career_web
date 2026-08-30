@@ -44,7 +44,7 @@ async function upsertColleges(docs: any[]) {
 
 async function main() {
   await connectDB();
-  const files = ["seed.json", "seed2.json", "seed3.json", "seed4.json"];
+  const files = ["seed.json", "seed2.json", "seed3.json", "seed4.json", "seed5.json"];
   const merged: SeedFile = {
     exams: [],
     careers: [],
@@ -73,6 +73,15 @@ async function main() {
     outcomes: await upsertMany(Outcome, merged.outcomes, "careerSlug"),
     roadmaps: await upsertMany(Roadmap, merged.roadmaps, "careerSlug"),
   };
+
+  // Curated "popular" careers (merge-safe $set, does not touch other fields).
+  const popularSlugs = [
+    "bsc-cs", "bsc-nursing", "architecture", "mbbs", "civil-engineer",
+    "computer-engineer", "pharmacy", "mechanical-engineer", "electrical-engineer",
+    "bds", "veterinary", "bsc-fisheries", "forestry",
+  ];
+  const popRes = await Career.updateMany({ slug: { $in: popularSlugs } }, { $set: { popular: true } });
+  counts.popular = popRes.modifiedCount;
 
   console.log("Seed complete:", counts);
   await disconnectDB();

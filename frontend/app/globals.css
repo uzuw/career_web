@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --panel: #ffffff;
+  --line: #e8ecf3;
+  --ink: #0f1728;
+  --mut: #64748b;
+}
+
+.dark {
+  --bg: #0b0e17;
+  --surface: #11141f;
+  --panel: #161a27;
+  --line: #232a3b;
+  --ink: #e6ebf4;
+  --mut: #8a94a8;
+}
+
+body {
+  background:
+    radial-gradient(1200px 500px at 80% -10%, rgba(99, 102, 241, 0.10), transparent),
+    var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* faint modular grid backdrop (sits behind content) */
+.grid-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.10) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 25%, transparent 80%);
+  mask-image: radial-gradient(ellipse at 50% 0%, #000 25%, transparent 80%);
+  opacity: 0.7;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-btn {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+}
+
+/* bento card */
+.bento {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}

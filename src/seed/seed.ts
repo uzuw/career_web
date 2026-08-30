@@ -7,6 +7,7 @@ import { College } from "../models/college";
 import { Scholarship } from "../models/scholarship";
 import { Outcome } from "../models/outcome";
 import { Roadmap } from "../models/roadmap";
+import { Alumni } from "../models/alumni";
 
 interface SeedFile {
   exams: any[];
@@ -15,6 +16,7 @@ interface SeedFile {
   scholarships: any[];
   outcomes: any[];
   roadmaps: any[];
+  alumni: any[];
 }
 
 async function upsertMany(model: any, docs: any[], key: string) {
@@ -44,7 +46,7 @@ async function upsertColleges(docs: any[]) {
 
 async function main() {
   await connectDB();
-  const files = ["seed.json", "seed2.json", "seed3.json", "seed4.json", "seed5.json"];
+  const files = ["seed.json", "seed2.json", "seed3.json", "seed4.json", "seed5.json", "seed6.json"];
   const merged: SeedFile = {
     exams: [],
     careers: [],
@@ -52,6 +54,7 @@ async function main() {
     scholarships: [],
     outcomes: [],
     roadmaps: [],
+    alumni: [],
   };
   for (const f of files) {
     const file = path.join(__dirname, "data", f);
@@ -63,6 +66,7 @@ async function main() {
     merged.scholarships.push(...(part.scholarships ?? []));
     merged.outcomes.push(...(part.outcomes ?? []));
     merged.roadmaps.push(...(part.roadmaps ?? []));
+    merged.alumni.push(...(part.alumni ?? []));
   }
 
   const counts = {
@@ -72,6 +76,7 @@ async function main() {
     scholarships: await upsertMany(Scholarship, merged.scholarships, "slug"),
     outcomes: await upsertMany(Outcome, merged.outcomes, "careerSlug"),
     roadmaps: await upsertMany(Roadmap, merged.roadmaps, "careerSlug"),
+    alumni: await upsertMany(Alumni, merged.alumni, "slug"),
   };
 
   // Curated "popular" careers (merge-safe $set, does not touch other fields).
@@ -82,6 +87,22 @@ async function main() {
   ];
   const popRes = await Career.updateMany({ slug: { $in: popularSlugs } }, { $set: { popular: true } });
   counts.popular = popRes.modifiedCount;
+
+  // Curated real college images (Wikimedia Commons, free-licensed).
+  const collegeLogos: Record<string, string> = {
+    iom: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Tribhuvan_University_logo.svg/320px-Tribhuvan_University_logo.svg.png",
+    "tu-central": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Tribhuvan_University_logo.svg/320px-Tribhuvan_University_logo.svg.png",
+    "ku-school-of-engineering": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Kathmandu_University_logo.svg/320px-Kathmandu_University_logo.svg.png",
+    "ku-school-of-science": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Kathmandu_University_logo.svg/320px-Kathmandu_University_logo.svg.png",
+    "ku-school-of-medicine": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Kathmandu_University_logo.svg/320px-Kathmandu_University_logo.svg.png",
+    "ioe-pulchowk": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Institute_of_Engineering%2C_TU_logo.png/320px-Institute_of_Engineering%2C_TU_logo.png",
+    "afu-tu": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Agriculture_%26_Forestry_University_logo.png/320px-Agriculture_%26_Forestry_University_logo.png",
+    bpkihs: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/BPKIHS_logo.png/320px-BPKIHS_logo.png",
+  };
+  for (const [slug, url] of Object.entries(collegeLogos)) {
+    await College.updateOne({ slug }, { $set: { logoUrl: url } });
+  }
+  counts.logos = Object.keys(collegeLogos).length;
 
   console.log("Seed complete:", counts);
   await disconnectDB();

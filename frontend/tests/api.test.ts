@@ -120,4 +120,32 @@ describe("College Choices Nepal — API contract", () => {
     expect([200, 201]).toContain(res.status);
     expect(out).not.toBeNull();
   });
+
+  it("GET /api/alumni returns attributed experiences", async () => {
+    const { status, body } = await get("/api/alumni");
+    expect(status).toBe(200);
+    expect(Array.isArray(body)).toBe(true);
+    expect(body.length).toBeGreaterThan(0);
+    for (const a of body) {
+      expect(typeof a.snippet).toBe("string");
+      expect(typeof a.sourceUrl).toBe("string");
+      expect(typeof a.sourceName).toBe("string");
+    }
+  });
+
+  it("GET /api/alumni/random returns one experience", async () => {
+    const { status, body } = await get("/api/alumni/random");
+    expect(status).toBe(200);
+    expect(typeof body.snippet).toBe("string");
+    expect(typeof body.sourceUrl).toBe("string");
+  });
+
+  it("GET /api/alumni?careerSlug filters by career", async () => {
+    const list = await get("/api/alumni");
+    const slug = list.body.find((a: any) => a.careerSlug)?.careerSlug;
+    if (!slug) return;
+    const { status, body } = await get(`/api/alumni?careerSlug=${encodeURIComponent(slug)}`);
+    expect(status).toBe(200);
+    expect(body.every((a: any) => a.careerSlug === slug)).toBe(true);
+  });
 });

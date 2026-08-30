@@ -9,6 +9,7 @@ import scholarshipsRouter from "./routes/scholarships";
 import roadmapsRouter from "./routes/roadmaps";
 import flagsRouter from "./routes/flags";
 import eligibilityRouter from "./routes/eligibility";
+import alumniRouter from "./routes/alumni";
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,7 @@ app.use("/api/exams", examsRouter);
 app.use("/api/scholarships", scholarshipsRouter);
 app.use("/api/roadmaps", roadmapsRouter);
 app.use("/api/eligibility", eligibilityRouter);
+app.use("/api/alumni", alumniRouter);
 app.use("/api/flags", flagsRouter);
 
 async function start() {

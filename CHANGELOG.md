@@ -3,6 +3,19 @@
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is SemVer (MAJOR.MINOR.PATCH).
 
+## [0.7.0] - 2026-08-30
+
+### Added (map, real images, alumni — feature/map-alumni-images)
+- **College map** (`/map`): Leaflet + react-leaflet, markers colored by affiliation, live province/affiliation filters, side list, popup → detail. No API key (OpenStreetMap tiles).
+- **Real college images**: `College.logoUrl` field; `CollegeImage` renders free-licensed Wikimedia logos (8 curated) with graceful gradient-tile fallback on 404; every card also links to a Google Images *search* (not hotlinked — ToS-safe).
+- **Alumni experiences** (`/alumni`): `Alumni` model + `GET /api/alumni` (filter by career/college) + `GET /api/alumni/random`; 12 curated, attributed public snippets (Reddit/Quora communities). UI: cards + "Surprise me" random + career/college filter. Clearly labeled as individual stories, not advice.
+- Navbar adds **Map** and **Alumni** links.
+
+### Notes
+- Management stream still deferred.
+- Facebook dropped as an image source (no clean public API); using Wikimedia + Google search link.
+- API contract tests: 13/13 passing (added alumni endpoint tests).
+
 ## [0.6.0] - 2026-08-30
 
 ### Added (frontend + corpus growth — feature/nextjs-frontend)

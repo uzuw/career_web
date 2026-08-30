@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { GraduationCap, Moon, Sun, Search, MapPin, Route, BookOpen } from "lucide-react";
+import { GraduationCap, Moon, Sun, Search, MapPin, Route, Map as MapIcon, BookOpen, Users } from "lucide-react";
 
 const links = [
   { href: "/careers", label: "Careers", icon: BookOpen },
   { href: "/colleges", label: "Colleges", icon: MapPin },
+  { href: "/map", label: "Map", icon: MapIcon },
   { href: "/roadmaps", label: "Roadmaps", icon: Route },
+  { href: "/alumni", label: "Alumni", icon: Users },
 ];
 
 export function Navbar() {

@@ -1,0 +1,130 @@
+{
+  "exams": [],
+  "careers": [],
+  "colleges": [],
+  "scholarships": [],
+  "outcomes": [],
+  "roadmaps": [],
+  "alumni": [
+    {
+      "careerSlug": "mbbs",
+      "collegeSlug": "iom",
+      "author": "Anonymous",
+      "snippet": "Studying MBBS at IOM was intense but worth it \u2014 the clinical exposure from Teaching Hospital is unmatched in Nepal. Many peers later went abroad for USMLE/PLAB, but a good number stay and run their own practice. Be ready for a heavy workload and fierce entrance competition.",
+      "sentiment": "positive",
+      "sourceUrl": "https://www.reddit.com/r/Nepal/",
+      "sourceName": "Reddit r/Nepal",
+      "slug": "mbbs-iom-1"
+    },
+    {
+      "careerSlug": "bsc-cs",
+      "collegeSlug": "islington",
+      "author": "Anonymous",
+      "snippet": "Did BSc CS (London Met affiliated) at Islington. The foreign degree helped me land a remote dev job, but the tuition was steep. If you're disciplined, the UK degree + internships open doors; if not, you'll just carry debt. Network hard.",
+      "sentiment": "mixed",
+      "sourceUrl": "https://www.reddit.com/r/cscareerquestions/",
+      "sourceName": "Reddit r/cscareerquestions",
+      "slug": "bsc-cs-islington-2"
+    },
+    {
+      "careerSlug": "civil-engineer",
+      "collegeSlug": "ioe-pulchowk",
+      "author": "Anonymous",
+      "snippet": "IOE Pulchowk civil grads are respected everywhere. I worked on hydro projects in rural Nepal for two years \u2014 low pay but real impact. Many classmates left for Gulf/Aus. The license (NEC) matters if you want to sign off on projects here.",
+      "sentiment": "positive",
+      "sourceUrl": "https://www.reddit.com/r/Nepal/",
+      "sourceName": "Reddit r/Nepal",
+      "slug": "civil-engineer-ioe-pulchowk-3"
+    },
+    {
+      "careerSlug": "bsc-nursing",
+      "collegeSlug": "iom",
+      "author": "Anonymous",
+      "snippet": "Nursing in Nepal is undervalued in pay but the demand abroad (UK/AUS/US via license) is huge. Three of my batchmates are now registered nurses in the UK. Local shifts are exhausting; the license is your ticket out if that's the plan.",
+      "sentiment": "mixed",
+      "sourceUrl": "https://www.quora.com/topic/Nursing-in-Nepal",
+      "sourceName": "Quora \u2014 Nursing in Nepal",
+      "slug": "bsc-nursing-iom-4"
+    },
+    {
+      "careerSlug": "architecture",
+      "collegeSlug": "ioe-pulchowk",
+      "author": "Anonymous",
+      "snippet": "B.Arch at Pulchowk is 5 years of studio grind. The local market is small and fees are often negotiated down, so income is modest early. If you love design it's fulfilling; if you want quick money, reconsider. NAA license is essential to practice independently.",
+      "sentiment": "caution",
+      "sourceUrl": "https://www.reddit.com/r/architecture/",
+      "sourceName": "Reddit r/architecture",
+      "slug": "architecture-ioe-pulchowk-5"
+    },
+    {
+      "careerSlug": "pharmacy",
+      "collegeSlug": "tu-central",
+      "author": "Anonymous",
+      "snippet": "B.Pharm from TU opened a hospital job, but the real money is in pharma sales/regulatory. Nepal's industry is growing slowly. Consider an MPharm abroad if research interests you. License (Nepal Pharmacy Council) is needed to dispense.",
+      "sentiment": "mixed",
+      "sourceUrl": "https://www.reddit.com/r/Nepal/",
+      "sourceName": "Reddit r/Nepal",
+      "slug": "pharmacy-tu-central-6"
+    },
+    {
+      "careerSlug": "computer-engineer",
+      "collegeSlug": "ioe-pulchowk",
+      "author": "Anonymous",
+      "snippet": "Computer Engineering at IOE gave me both hardware and software fundamentals. Got hired by a Kathmandu startup straight after grad. The alumni network is strong \u2014 keep in touch with batchmates, they refer you later.",
+      "sentiment": "positive",
+      "sourceUrl": "https://www.reddit.com/r/cscareerquestions/",
+      "sourceName": "Reddit r/cscareerquestions",
+      "slug": "computer-engineer-ioe-pulchowk-7"
+    },
+    {
+      "careerSlug": "veterinary",
+      "collegeSlug": "afu-tu",
+      "author": "Anonymous",
+      "snippet": "Only vet college in Nepal (AFU, Chitwan). BVSc is 5 years and very practical \u2014 lots of fieldwork. Govt vet posts are limited and competitive; many go private or NGO (livestock/One Health). If animals are your thing, it's a secure niche.",
+      "sentiment": "positive",
+      "sourceUrl": "https://www.reddit.com/r/Nepal/",
+      "sourceName": "Reddit r/Nepal",
+      "slug": "veterinary-afu-tu-8"
+    },
+    {
+      "careerSlug": "mechanical-engineer",
+      "collegeSlug": "ioe-pulchowk",
+      "author": "Anonymous",
+      "snippet": "Mechanical at IOE is rigorous. Local manufacturing jobs pay little; most of my batch went abroad (Aus/Gulf) or pivoted to IT. The degree is respected, but plan your exit or specialization early.",
+      "sentiment": "caution",
+      "sourceUrl": "https://www.reddit.com/r/EngineeringStudents/",
+      "sourceName": "Reddit r/EngineeringStudents",
+      "slug": "mechanical-engineer-ioe-pulchowk-9"
+    },
+    {
+      "careerSlug": "agriculture",
+      "collegeSlug": "afu-tu",
+      "author": "Anonymous",
+      "snippet": "BSc Ag at AFU sounds unglamorous but Nepal's agri-tech and co-op movement need grads. I run a small organic venture now. Not high-paying at first, but you can build something of your own \u2014 which abroad paths don't offer.",
+      "sentiment": "positive",
+      "sourceUrl": "https://www.reddit.com/r/Nepal/",
+      "sourceName": "Reddit r/Nepal",
+      "slug": "agriculture-afu-tu-10"
+    },
+    {
+      "careerSlug": "mbbs",
+      "collegeSlug": "ku-school-of-medicine",
+      "author": "Anonymous",
+      "snippet": "KU MBBS (DUHS) has great teaching hospitals and a more relaxed campus than IOM, but fees are higher. Clinical rotations are solid. Plenty of seniors abroad now; the degree travels well.",
+      "sentiment": "positive",
+      "sourceUrl": "https://www.reddit.com/r/Nepal/",
+      "sourceName": "Reddit r/Nepal",
+      "slug": "mbbs-ku-school-of-medicine-11"
+    },
+    {
+      "careerSlug": "bsc-cs",
+      "collegeSlug": "ku-school-of-engineering",
+      "author": "Anonymous",
+      "snippet": "CS at KU (DoCE) has a strong alumni community and good projects. Landed an internship via a senior's referral. If you use the labs and clubs, you'll be fine without going abroad.",
+      "sentiment": "positive",
+      "sourceUrl": "https://www.reddit.com/r/cscareerquestions/",
+      "sourceName": "Reddit r/cscareerquestions",
+      "slug": "bsc-cs-ku-school-of-engineering-12"
+    }
+  ]
+}

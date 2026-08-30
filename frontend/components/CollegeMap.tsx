@@ -78,10 +78,10 @@ export function CollegeMap({ colleges }: { colleges: College[] }) {
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <div className="bento h-[60vh] overflow-hidden p-0 lg:col-span-2">
+        <div className="bento h-[72vh] overflow-hidden p-0 lg:col-span-2">
           <MapView colleges={filtered} selected={selected} onSelect={setSelected} satellite={satellite} L={L} />
         </div>
-        <div className="bento h-[60vh] overflow-auto p-3">
+        <div className="bento h-[72vh] overflow-auto p-3">
           <div className="font-grotesk text-sm font-bold mb-2">Colleges on map</div>
           <ul className="space-y-1">
             {filtered.map((c) => (
@@ -108,7 +108,7 @@ function MapView({ colleges, selected, onSelect, satellite, L }: { colleges: Col
 
   useEffect(() => {
     if (!L || mapRef.current) return;
-    const map = L.map(ref.current).setView(NEPAL_CENTER, 7);
+    const map = L.map(ref.current, { maxZoom: 16 }).setView(NEPAL_CENTER, 7);
     mapRef.current = map;
     return () => { map.remove(); mapRef.current = null; };
   }, [L]);
@@ -121,13 +121,13 @@ function MapView({ colleges, selected, onSelect, satellite, L }: { colleges: Col
     const layer =
       satellite
         ? L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-            attribution: "Tiles &copy; Esri — Source: Esri, Maxar, Earthstar Geographics",
-            maxZoom: 19,
-          })
+          attribution: "Tiles &copy; Esri — Source: Esri, Maxar, Earthstar Geographics",
+          maxZoom: 16,
+        })
         : L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            maxZoom: 19,
-          });
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxZoom: 16,
+        });
     layer.addTo(map);
     baseRef.current = layer;
   }, [satellite, L]);

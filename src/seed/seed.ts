@@ -89,16 +89,25 @@ async function main() {
   counts.popular = popRes.modifiedCount;
 
   // Curated real college images (downloaded into frontend/public/assets/college/{slug}.png).
-  // Missing files gracefully fall back to the gradient tile in CollegeImage.
+  // Only slugs with a verified local asset get a logoUrl; the rest fall back to the gradient tile.
   const collegeLogos: Record<string, string> = {
     iom: "/assets/college/iom.png",
     "tu-central": "/assets/college/tu-central.png",
-    "ku-school-of-engineering": "/assets/college/ku-school-of-engineering.png",
-    "ku-school-of-science": "/assets/college/ku-school-of-science.png",
-    "ku-school-of-medicine": "/assets/college/ku-school-of-medicine.png",
     "ioe-pulchowk": "/assets/college/ioe-pulchowk.png",
-    "afu-tu": "/assets/college/afu-tu.png",
+    "ioe-purwanchal": "/assets/college/ioe-purwanchal.png",
+    "ioe-thapathali": "/assets/college/ioe-thapathali.png",
     bpkihs: "/assets/college/bpkihs.png",
+    islington: "/assets/college/islington.png",
+    janaki: "/assets/college/janaki.png",
+    khwopa: "/assets/college/khwopa.png",
+    "ku-soe": "/assets/college/ku-soe.png",
+    "ku-sos": "/assets/college/ku-sos.png",
+    manmohan: "/assets/college/manmohan.png",
+    mcoms: "/assets/college/mcoms.png",
+    nmc: "/assets/college/nmc.png",
+    pahs: "/assets/college/pahs.png",
+    prime: "/assets/college/prime.png",
+    deerwalk: "/assets/college/deerwalk.png",
   };
   for (const [slug, url] of Object.entries(collegeLogos)) {
     await College.updateOne({ slug }, { $set: { logoUrl: url } });

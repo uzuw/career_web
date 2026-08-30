@@ -3,6 +3,17 @@
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is SemVer (MAJOR.MINOR.PATCH).
 
+## [0.8.0] - 2026-08-30
+
+### Added (entrance-exam hub — feature/entrance-hub)
+- **Entrance exams hub** (`/entrance`): every +2 Science entrance exam as a card — eligibility, schedule, application fee, previous cutoff, prep resources, syllabus + official links. Expandable to show exactly which **careers it leads to** and which **colleges require it** (cross-linked via `Exam.forCareer` + `College.entranceRequired`). Search across exams/careers/colleges.
+- Navbar adds **Exams** link.
+- `lib/api.ts` `Exam`/`College` types expanded to the full API shape (nameNp, scheduleMonth, appFeeNpr, cutoffPrev, prepResources, syllabusUrl, entranceRequired).
+
+### Notes
+- Management stream still deferred.
+- API contract tests: 13/13 passing.
+
 ## [0.7.0] - 2026-08-30
 
 ### Added (map, real images, alumni — feature/map-alumni-images)

@@ -10,8 +10,16 @@ function ImagesLink({ name }: { name: string }) {
     <span
       role="link"
       tabIndex={0}
-      onClick={(e) => { e.stopPropagation(); window.open(googleImagesSearch(name), "_blank", "noopener"); }}
-      onKeyDown={(e) => { if (e.key === "Enter") { e.stopPropagation(); window.open(googleImagesSearch(name), "_blank", "noopener"); } }}
+      onClick={(e) => {
+        e.stopPropagation();
+        window.open(googleImagesSearch(name), "_blank", "noopener");
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          e.stopPropagation();
+          window.open(googleImagesSearch(name), "_blank", "noopener");
+        }
+      }}
       className="absolute bottom-1.5 right-1.5 cursor-pointer rounded-md bg-black/55 px-1.5 py-0.5 text-[10px] font-medium text-white hover:bg-black/75"
       title="Search more images on Google"
     >
@@ -20,31 +28,30 @@ function ImagesLink({ name }: { name: string }) {
   );
 }
 
-const palette: Record<string, [string, string]> = {
-  TU: ["#1e3a8a", "#3b82f6"],
-  KU: ["#065f46", "#10b981"],
-  PU: ["#7c2d12", "#f97316"],
-  MU: ["#581c87", "#a855f7"],
-  AFU: ["#14532d", "#22c55e"],
-  Foreign: ["#92400e", "#f59e0b"],
-  Other: ["#334155", "#64748b"],
-};
+export function CollegeImage({
+  name,
+  slug,
+  affiliation,
+  logoUrl,
+  className,
+}: {
+  name: string;
+  slug?: string;
+  affiliation: string;
+  logoUrl?: string;
+  className?: string;
+}) {
+  // Resolution order (every college always ends on a real <img>):
+  //   1. curated logoUrl — set in the corpus for the 17 colleges with a real
+  //      local /assets/college/{slug}.png (it already points at that file).
+  //   2. generated SVG placeholder /assets/college/{slug}.svg — exists for every
+  //      college, so there is never a broken image or a 404.
+  const svg = slug ? `/assets/college/${slug}.svg` : null;
+  const candidates = [logoUrl, svg].filter(Boolean) as string[];
 
-function initials(name: string): string {
-  const words = name.replace(/[^A-Za-z ]/g, "").trim().split(/\s+/).filter(Boolean);
-  if (words.length === 0) return "?";
-  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
-  return (words[0][0] + words[words.length - 1][0]).toUpperCase();
-}
-
-export function CollegeImage({ name, slug, affiliation, logoUrl, className }: { name: string; slug?: string; affiliation: string; logoUrl?: string; className?: string }) {
-  const [errored, setErrored] = useState(false);
-
-  // Only render an <img> when a verified logoUrl is provided (set in the corpus
-  // for colleges with a downloaded /assets/college/{slug}.png). Otherwise we go
-  // straight to the gradient tile — no 404/broken-image for missing files.
-  const src = !errored && logoUrl ? logoUrl : null;
-  const [a, b] = palette[affiliation] ?? palette.Other;
+  // index of the candidate currently shown; advances on error
+  const [idx, setIdx] = useState(0);
+  const src = candidates[Math.min(idx, candidates.length - 1)] ?? null;
 
   if (src) {
     return (
@@ -52,18 +59,27 @@ export function CollegeImage({ name, slug, affiliation, logoUrl, className }: { 
         <img
           src={src}
           alt={name}
-          className="h-full w-full object-contain"
-          style={{ background: `linear-gradient(135deg, ${a}22, ${b}22)` }}
-          onError={() => setErrored(true)}
+          className="h-full w-full object-cover"
+          onError={() => {
+            // move to the next candidate; the SVG (last) always exists, so this
+            // never falls through to a broken image.
+            setIdx((i) => Math.min(i + 1, candidates.length - 1));
+          }}
         />
         <ImagesLink name={name} />
       </div>
     );
   }
 
+  // Only when a college has no slug at all — last-resort gradient tile.
   return (
-    <div className={`relative flex items-center justify-center ${className ?? ""}`} style={{ background: `linear-gradient(135deg, ${a}, ${b})` }}>
-      <span className="font-grotesk text-2xl font-bold text-white/90">{initials(name)}</span>
+    <div
+      className={`relative flex items-center justify-center ${className ?? ""}`}
+      style={{ background: "linear-gradient(135deg,#334155,#64748b)" }}
+    >
+      <span className="font-grotesk text-2xl font-bold text-white/90">
+        {name.slice(0, 2).toUpperCase()}
+      </span>
       <ImagesLink name={name} />
     </div>
   );

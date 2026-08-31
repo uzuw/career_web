@@ -1,0 +1,8 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.env
+
+# Chroma vector index (rebuilt via `python -m app.ingest`)
+chroma/

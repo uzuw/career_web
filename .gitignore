@@ -53,3 +53,9 @@ logs/
 *.tmp
 .cache/
 .DS_Store
+ai-service/chroma/
+ai-service/.venv/
+ai-service/.env
+ai-service/chroma/
+ai-service/.venv/
+ai-service/.env

@@ -61,62 +61,6 @@ body {
   border-radius: 16px;
 }
 
-/* ── Playful / hand-drawn interaction layer ──────────────────── */
-.wob  { border-radius: 255px 14px 225px 14px / 14px 225px 14px 255px; }
-.wob2 { border-radius: 14px 255px 14px 225px / 225px 14px 255px 14px; }
-
-.lift {
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-}
-.lift:hover {
-  transform: translateY(-6px) rotate(-0.6deg);
-  box-shadow: 0 14px 30px -12px rgba(79, 70, 229, 0.35);
-}
-.lift-right:hover { transform: translateY(-6px) rotate(0.6deg); }
-
-@keyframes rise {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.rise { animation: rise 0.6s ease both; }
-.rise-1 { animation-delay: 0.05s; }
-.rise-2 { animation-delay: 0.12s; }
-.rise-3 { animation-delay: 0.19s; }
-.rise-4 { animation-delay: 0.26s; }
-
-@keyframes wiggle {
-  0%, 100% { transform: rotate(-1.4deg); }
-  50%      { transform: rotate(1.6deg); }
-}
-.wiggle { animation: wiggle 3.2s ease-in-out infinite; }
-
-.wavy {
-  text-decoration: underline transparent;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-  transition: text-decoration-color 0.2s ease;
-}
-.wavy:hover { text-decoration-color: #6366f1; text-decoration-style: wavy; }
-
-@keyframes drift {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(2%, -3%) scale(1.06); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-.orb {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(48px);
-  opacity: 0.55;
-  pointer-events: none;
-  animation: drift 9s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .wiggle, .orb, .rise, .rise-1, .rise-2, .rise-3, .rise-4 { animation: none !important; }
-  .lift, .lift-right { transition: none; }
-}
-
 /* ── Markdown rendering inside chat bubbles ───────────────────── */
 .markdown > *:first-child { margin-top: 0; }
 .markdown > *:last-child { margin-bottom: 0; }

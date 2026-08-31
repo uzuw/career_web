@@ -15,7 +15,7 @@ export function CareerCard({ career }: { career: Career }) {
     ? career.subjectCombo
     : career.subjectCombo ? career.subjectCombo.split("+") : [];
   return (
-    <Link href={`/careers/${career.slug}`} className="bento lift group relative block p-5 transition hover:-translate-y-0.5 hover:shadow-brand">
+    <Link href={`/careers/${career.slug}`} className="bento group relative block p-5 transition hover:-translate-y-0.5 hover:shadow-brand">
       {career.popular && (
         <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-700 dark:bg-amber-500/15 dark:text-amber-400">
           <Star size={11} className="fill-amber-500 text-amber-500" /> Popular

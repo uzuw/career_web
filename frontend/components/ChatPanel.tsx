@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Send, Sparkles, X, ExternalLink } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { streamChatMessage, type ChatMessage, type ChatSource } from "@/lib/chat";
 
 export function ChatPanel() {
@@ -116,7 +118,11 @@ export function ChatPanel() {
                       : { background: "var(--bg)", border: "1px solid var(--line)" }
                   }
                 >
-                  <p className="whitespace-pre-wrap leading-relaxed">{m.content}</p>
+                  <div className="markdown whitespace-pre-wrap leading-relaxed">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {m.content}
+                    </ReactMarkdown>
+                  </div>
                   {m.sources && m.sources.length > 0 && (
                     <div className="mt-2 flex flex-wrap gap-1.5">
                       {m.sources.map((s: ChatSource, j) => (

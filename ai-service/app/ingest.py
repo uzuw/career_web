@@ -18,5 +18,7 @@ def ingest() -> int:
 
 
 if __name__ == "__main__":
+    from app.config import COLLECTION_NAME
+
     n = ingest()
-    print(f"Ingested {n} documents into the {__import__('app.config').COLLECTION_NAME} collection.")
+    print(f"Ingested {n} documents into the {COLLECTION_NAME} collection.")

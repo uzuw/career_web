@@ -8,6 +8,8 @@ import glob
 import json
 import os
 
+from typing import List
+
 from langchain_core.documents import Document
 
 # ai-service/app/data/corpus_loader.py -> ../../../src/seed/data
@@ -47,6 +49,7 @@ def load_corpus_documents() -> List[Document]:
                 text = _doc_text(item)
                 if not text.strip():
                     continue
+                urls = item.get("sourceUrls", [])
                 docs.append(
                     Document(
                         page_content=text,
@@ -56,7 +59,7 @@ def load_corpus_documents() -> List[Document]:
                             or item.get("titleEn")
                             or item.get("title")
                             or "",
-                            "sourceUrls": item.get("sourceUrls", []),
+                            **({"sourceUrls": urls} if urls else {}),
                         },
                     )
                 )

@@ -9,6 +9,7 @@ load_dotenv()
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "grok").lower()  # "grok" (xAI) or "groq"
 GROK_API_KEY = os.getenv("GROK_API_KEY", "")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 
 # Embeddings
 EMBEDDINGS_MODEL = os.getenv("EMBEDDINGS_MODEL", "sentence-transformers/all-MiniLM-L6-v2")

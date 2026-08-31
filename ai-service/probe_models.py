@@ -1,5 +1,6 @@
 import os, json, urllib.request
 from dotenv import load_dotenv
+
 load_dotenv()
 key = os.getenv("GROQ_API_KEY")
 
@@ -12,10 +13,12 @@ candidates = [
     "gemma2-9b-it",
     "mixtral-8x7b-32768",
 ]
-body = json.dumps({
-    "messages": [{"role": "user", "content": "Reply with just the word: ok"}],
-    "max_tokens": 5,
-}).encode()
+body = json.dumps(
+    {
+        "messages": [{"role": "user", "content": "Reply with just the word: ok"}],
+        "max_tokens": 5,
+    }
+).encode()
 for model in candidates:
     req = urllib.request.Request(
         "https://api.groq.com/openai/v1/chat/completions",

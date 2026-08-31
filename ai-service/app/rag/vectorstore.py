@@ -1,4 +1,5 @@
 """Vector store factory: Chroma (local) or Pinecone (managed)."""
+
 from app.config import (
     CHROMA_PERSIST_DIR,
     COLLECTION_NAME,

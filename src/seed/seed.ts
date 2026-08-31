@@ -129,6 +129,9 @@ async function main() {
     naibs: "/assets/college/naibs.png",
     kusms: "/assets/college/kusms.png",
     softwarica: "/assets/college/softwarica.png",
+    acem: "/assets/college/acem.png",
+    "afu-rampur": "/assets/college/afu-rampur.png",
+    birat: "/assets/college/birat.png",
   };
   for (const [slug, url] of Object.entries(collegeLogos)) {
     await College.updateOne({ slug }, { $set: { logoUrl: url } });

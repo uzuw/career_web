@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Send, Sparkles, X, ExternalLink } from "lucide-react";
-import { sendChatMessage, type ChatMessage, type ChatSource } from "@/lib/chat";
+import { streamChatMessage, type ChatMessage, type ChatSource } from "@/lib/chat";
 
 export function ChatPanel() {
   const [open, setOpen] = useState(false);
@@ -30,14 +30,53 @@ export function ChatPanel() {
     setMessages((m) => [...m, { role: "user", content: text }]);
     setInput("");
     setLoading(true);
+
+    // Create a placeholder assistant message that we fill with streamed tokens.
+    const assistantId = Date.now();
+    setMessages((m) => [...m, { role: "assistant", content: "", sources: [], id: assistantId } as any]);
+
     try {
-      const { answer, sources } = await sendChatMessage(text, history);
-      setMessages((m) => [...m, { role: "assistant", content: answer, sources }]);
+      await streamChatMessage(
+        text,
+        history,
+        // append each token to the placeholder message
+        (chunk) =>
+          setMessages((m) =>
+            m.map((msg) =>
+              (msg as any).id === assistantId
+                ? { ...msg, content: msg.content + chunk }
+                : msg
+            )
+          ),
+        // onDone: attach sources
+        (sources) =>
+          setMessages((m) =>
+            m.map((msg) =>
+              (msg as any).id === assistantId ? { ...msg, sources } : msg
+            )
+          ),
+        // onError
+        (err) =>
+          setMessages((m) =>
+            m.map((msg) =>
+              (msg as any).id === assistantId
+                ? { ...msg, content: err }
+                : msg
+            )
+          )
+      );
     } catch {
-      setMessages((m) => [
-        ...m,
-        { role: "assistant", content: "Sorry, the guidance service is unavailable right now. Please try again later." },
-      ]);
+      setMessages((m) =>
+        m.map((msg) =>
+          (msg as any).id === assistantId
+            ? {
+                ...msg,
+                content:
+                  "Sorry, the guidance service is unavailable right now. Please try again later.",
+              }
+            : msg
+        )
+      );
     } finally {
       setLoading(false);
     }

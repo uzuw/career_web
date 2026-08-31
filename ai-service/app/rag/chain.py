@@ -71,7 +71,24 @@ def build_chain():
         full = history_msgs + prompt_msgs
         return llm.invoke(full)
 
-    return _invoke
+    def _stream(message: str, history=None):
+        """Yield text chunks (str) as the LLM generates them."""
+        retrieved = retriever.invoke(message)
+        context = _format_docs(retrieved)
+        history_msgs = _history_to_messages(history or [])
+        prompt_msgs = list(_PROMPT.format_messages(context=context, question=message))
+        full = history_msgs + prompt_msgs
+        for chunk in llm.stream(full):
+            txt = chunk.content if hasattr(chunk, "content") else chunk
+            if isinstance(txt, str):
+                yield txt
+
+    return _invoke, _stream
+
+
+# Backwards-compatible single accessor (non-streaming consumers)
+def build_chain_invoke():
+    return build_chain()[0]
 
 
 def extract_sources(docs):

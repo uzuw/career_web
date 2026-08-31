@@ -21,8 +21,11 @@ PINECONE_API_KEY = os.getenv("PINECONE_API_KEY", "")
 PINECONE_INDEX = os.getenv("PINECONE_INDEX", "merobhawishya")
 
 # Service
-CHAT_API_HOST = os.getenv("CHAT_API_HOST", "0.0.0.0")
+CHAT_API_HOST = os.getenv("CHAT_API_HOST", "127.0.0.1")
 CHAT_API_PORT = int(os.getenv("CHAT_API_PORT", "8000"))
+
+# LLM model name (provider-specific). Override to a model your key can access.
+LLM_MODEL = os.getenv("LLM_MODEL", "")
 
 # Corpus
 CORPUS_SOURCE = os.getenv("CORPUS_SOURCE", "json").lower()  # "json" or "mongo"

@@ -11,6 +11,7 @@ from langchain_openai import ChatOpenAI
 from app.config import (
     GROK_API_KEY,
     GROQ_API_KEY,
+    LLM_MODEL,
     LLM_PROVIDER,
 )
 
@@ -39,8 +40,9 @@ def get_llm(temperature: float = 0.2) -> ChatOpenAI:
             f"{'GROK_API_KEY' if provider == 'grok' else 'GROQ_API_KEY'} in .env."
         )
 
+    model = LLM_MODEL or _MODEL[provider]
     return ChatOpenAI(
-        model=_MODEL[provider],
+        model=model,
         temperature=temperature,
         api_key=api_key,
         base_url=base_url,

@@ -10,7 +10,7 @@ const affColor: Record<string, string> = {
 export function CollegeCard({ college }: { college: College }) {
   const accent = affColor[college.affiliation] ?? "#64748b";
   return (
-    <Link href={`/colleges/${college.slug}`} className="bento group block overflow-hidden transition hover:-translate-y-0.5 hover:shadow-brand">
+    <Link href={`/colleges/${college.slug}`} className="bento lift group block overflow-hidden transition hover:-translate-y-0.5 hover:shadow-brand">
       <div className="relative h-28 w-full overflow-hidden">
         <CollegeImage slug={college.slug} name={college.name} affiliation={college.affiliation} logoUrl={college.logoUrl} />
         <span

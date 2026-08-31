@@ -3,7 +3,7 @@
 The RAG chain is built lazily on first request so importing this module does
 not require API keys or an index to be present (lets `uvicorn` boot for checks).
 """
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import CHAT_API_HOST, CHAT_API_PORT
@@ -38,12 +38,18 @@ def health():
 
 @app.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest) -> ChatResponse:
-    chain = _get_chain()
-    retriever = get_vectorstore().as_retriever(search_kwargs={"k": 5})
+    try:
+        chain = _get_chain()
+        retriever = get_vectorstore().as_retriever(search_kwargs={"k": 5})
 
-    # Retrieve for citations, then answer via the chain.
-    retrieved = retriever.invoke(req.message)
-    answer = chain.invoke(req.message)
+        # Retrieve for citations, then answer via the chain.
+        retrieved = retriever.invoke(req.message)
+        answer = chain.invoke(req.message)
+    except Exception as e:  # missing API key, model/network error, etc.
+        raise HTTPException(
+            status_code=503,
+            detail=f"Chat service unavailable: {e}",
+        )
 
     sources = [
         Source(

@@ -107,6 +107,23 @@ export default async function Home() {
           {colleges.slice(0, 8).map((c) => <CollegeCard key={c.slug} college={c} />)}
         </div>
       </section>
+
+      {/* POPULAR COLLEGES — recognizable institutions across affiliations */}
+      <section className="pb-14">
+        <div className="mb-4 flex items-end justify-between">
+          <h2 className="font-grotesk text-2xl font-bold">Popular colleges</h2>
+          <Link href="/colleges" className="flex items-center gap-1 text-sm font-semibold text-brand">All colleges <ArrowRight size={15} /></Link>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {([
+            "tu-iost", "ku-soe", "ioe-pulchowk", "gces",
+            "nec-pu", "islington", "iom", "mcoms",
+          ]
+            .map((slug) => colleges.find((c) => c.slug === slug))
+            .filter(Boolean)
+            .map((c: any) => <CollegeCard key={c.slug} college={c} />))}
+        </div>
+      </section>
     </div>
   );
 }

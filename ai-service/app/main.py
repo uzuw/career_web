@@ -80,7 +80,10 @@ def chat(req: ChatRequest, request: Request) -> ChatResponse:
         chain = _get_chain()
         retriever = get_vectorstore().as_retriever(search_kwargs={"k": 5})
         retrieved = retriever.invoke(req.message)
-        answer = chain(req.message, req.history)  # type: ignore[call-arg]
+        raw = chain(req.message, req.history)  # type: ignore[call-arg]
+        # chain may return an AIMessage or a plain str depending on the build; normalize.
+        content = raw.content if hasattr(raw, "content") else raw
+        answer = content if isinstance(content, str) else str(content)
     except HTTPException:
         raise
     except Exception:

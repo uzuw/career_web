@@ -88,8 +88,10 @@ async function main() {
   const popRes = await Career.updateMany({ slug: { $in: popularSlugs } }, { $set: { popular: true } });
   counts.popular = popRes.modifiedCount;
 
-  // Curated real college images (downloaded into frontend/public/assets/college/{slug}.png).
-  // Only slugs with a verified local asset get a logoUrl; the rest fall back to the gradient tile.
+  // Curated real college images (downloaded into frontend/public/assets/college/{slug}.png
+  // from official college sites / Wikimedia). Only slugs with a verified local asset get a
+  // logoUrl; the rest fall back to the branded SVG placeholder. Excluded: tu-iost (6MB photo,
+  // too heavy) and kmc/nobel (identical generic meta-image placeholder, not a real logo).
   const collegeLogos: Record<string, string> = {
     iom: "/assets/college/iom.png",
     "tu-central": "/assets/college/tu-central.png",
@@ -108,6 +110,25 @@ async function main() {
     pahs: "/assets/college/pahs.png",
     prime: "/assets/college/prime.png",
     deerwalk: "/assets/college/deerwalk.png",
+    // newly fetched real logos from official sites
+    gces: "/assets/college/gces.png",
+    "nec-pu": "/assets/college/nec-pu.png",
+    herald: "/assets/college/herald.png",
+    stamford: "/assets/college/stamford.png",
+    tbc: "/assets/college/tbc.png",
+    texas: "/assets/college/texas.png",
+    "texas-intl": "/assets/college/texas-intl.png",
+    phoenix: "/assets/college/phoenix.png",
+    ismt: "/assets/college/ismt.png",
+    padmashree: "/assets/college/padmashree.png",
+    "informatics-pokhara": "/assets/college/informatics-pokhara.png",
+    kec: "/assets/college/kec.png",
+    kecktm: "/assets/college/kecktm.png",
+    nce: "/assets/college/nce.png",
+    ngmc: "/assets/college/ngmc.png",
+    naibs: "/assets/college/naibs.png",
+    kusms: "/assets/college/kusms.png",
+    softwarica: "/assets/college/softwarica.png",
   };
   for (const [slug, url] of Object.entries(collegeLogos)) {
     await College.updateOne({ slug }, { $set: { logoUrl: url } });

@@ -1,7 +1,14 @@
 """Pydantic request/response models for the chat API."""
-from typing import List, Optional
+from typing import List, Literal, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, constr
+
+MAX_MESSAGE_LEN = 2000
+
+
+class ChatTurn(BaseModel):
+    role: Literal["user", "assistant"]
+    content: constr(max_length=MAX_MESSAGE_LEN)  # type: ignore[valid-type]
 
 
 class Source(BaseModel):
@@ -11,9 +18,8 @@ class Source(BaseModel):
 
 
 class ChatRequest(BaseModel):
-    message: str
-    # Optional prior turns: [{"role": "user" | "assistant", "content": "..."}]
-    history: List[dict] = Field(default_factory=list)
+    message: constr(strip_whitespace=True, max_length=MAX_MESSAGE_LEN)  # type: ignore[valid-type]
+    history: List[ChatTurn] = Field(default_factory=list)
 
 
 class ChatResponse(BaseModel):

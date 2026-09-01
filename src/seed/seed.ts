@@ -69,7 +69,7 @@ async function main() {
     merged.alumni.push(...(part.alumni ?? []));
   }
 
-  const counts = {
+  const counts: Record<string, number> = {
     exams: await upsertMany(Exam, merged.exams, "slug"),
     careers: await upsertMany(Career, merged.careers, "slug"),
     colleges: await upsertColleges(merged.colleges),

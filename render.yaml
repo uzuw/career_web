@@ -1,0 +1,19 @@
+services:
+  # Express API — reads the seeded corpus from MongoDB Atlas (M0 free).
+  - type: web
+    name: merobhawishya-api
+    runtime: node
+    plan: free
+    region: singapore
+    rootDir: .
+    buildCommand: npm ci && npm run build
+    startCommand: node dist/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NODE_ENV
+        value: production
+      # Set MONGO_URI from your MongoDB Atlas free cluster (see DEPLOY.md).
+      - key: MONGO_URI
+        sync: false

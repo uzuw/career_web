@@ -12,17 +12,27 @@ router.get("/", async (req, res) => {
   res.json(docs);
 });
 
+// ponytail: hand-rolled rate limit for the write endpoint (no dep for this).
+// 10 flags / 10 min per IP; Map prunes on write so it can't grow unbounded.
+const hits = new Map<string, number[]>();
+function flagRateLimit(req: any, res: any, next: any) {
+  const now = Date.now();
+  const arr = (hits.get(req.ip) ?? []).filter((t) => now - t < 10 * 60 * 1000);
+  if (arr.length >= 10) return res.status(429).json({ error: "Too many reports, try again later" });
+  arr.push(now);
+  hits.set(req.ip, arr);
+  next();
+}
+
 // POST /api/flags  — user correction pathway
-router.post("/", async (req, res) => {
+router.post("/", flagRateLimit, async (req, res) => {
+  const { entity, entityId, note, field, reporter } = req.body ?? {};
+  if (typeof entity !== "string" || typeof entityId !== "string" || typeof note !== "string")
+    return res.status(400).json({ error: "entity, entityId and note are required" });
+  if (note.length > 2000 || entityId.length > 200 || (field && field.length > 100) || (reporter && reporter.length > 100))
+    return res.status(400).json({ error: "field too long" });
   try {
-    const flag = new Flag({
-      entity: req.body.entity,
-      entityId: req.body.entityId,
-      field: req.body.field,
-      note: req.body.note,
-      reporter: req.body.reporter,
-      status: "open",
-    });
+    const flag = new Flag({ entity, entityId, field, note, reporter, status: "open" });
     await flag.save();
     res.status(201).json(flag);
   } catch (e: any) {

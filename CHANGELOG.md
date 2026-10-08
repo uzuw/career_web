@@ -3,6 +3,22 @@
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is SemVer (MAJOR.MINOR.PATCH).
 
+## [0.10.0] - 2026-09-27
+
+### Added
+- `GET /api/colleges` accepts `limit` (capped 50) + `page`, returns `X-Total-Count` (omitted limit = full list, back-compat).
+- Request validation + 10-req/10-min rate limit on `POST /api/flags`; JSON 404/error middleware (no HTML stack leaks).
+- GitHub Actions CI (backend `tsc` + `vitest run src`, frontend `tsc`).
+
+### Changed
+- College logos render `object-contain` on white (wide logos no longer cropped); SVG placeholders keep `object-cover`; `loading="lazy"`; detail/career pages now pass `logoUrl`.
+- `/colleges` shows 12 cards + `Show more` (was all 62 at once); home keeps one curated "Popular colleges" section.
+- Photos converted to optimized JPEG (`.png` → `.jpg`, max 800px wide): image dir 5.3MB → 2.1MB. Transparent logos stay PNG.
+- List pages use hourly ISR (`revalidate = 3600`) instead of per-visit `no-store` fetches.
+
+### Fixed
+- Root `npm test` scoped to `src/` (was picking up frontend tests without globals and failing).
+
 ## [0.8.0] - 2026-08-30
 
 ### Added (entrance-exam hub — feature/entrance-hub)

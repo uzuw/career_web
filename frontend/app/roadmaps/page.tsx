@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Route, ArrowRight } from "lucide-react";
 import { api } from "@/lib/api";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // corpus changes rarely — serve stale, revalidate hourly
 
 export default async function RoadmapsPage() {
   let roadmaps: Awaited<ReturnType<typeof api.roadmaps>> = [];

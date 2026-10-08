@@ -5,7 +5,7 @@ import { api } from "@/lib/api";
 import { CollegeImage } from "@/components/CollegeImage";
 import { CorpusUpdateButton } from "@/components/CorpusUpdateButton";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // corpus changes rarely — serve stale, revalidate hourly
 
 export default async function CollegeDetail({ params }: { params: { slug: string } }) {
   let college: Awaited<ReturnType<typeof api.college>> | null = null;
@@ -27,7 +27,7 @@ export default async function CollegeDetail({ params }: { params: { slug: string
 
       <div className="bento overflow-hidden">
         <div className="relative h-44 w-full">
-          <CollegeImage slug={college.slug} name={college.name} affiliation={college.affiliation} />
+          <CollegeImage slug={college.slug} name={college.name} affiliation={college.affiliation} logoUrl={college.logoUrl} />
           <span className="absolute left-4 top-4 rounded-md px-2.5 py-1 text-xs font-semibold text-white" style={{ background: college.affiliation === "Foreign" ? "#d97706" : "#6366f1" }}>
             {college.affiliation}{college.foreignPartner ? ` · ${college.foreignPartner.split(",")[0]}` : ""}
           </span>

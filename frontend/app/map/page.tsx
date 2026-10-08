@@ -2,7 +2,7 @@ import { MapPin } from "lucide-react";
 import { api } from "@/lib/api";
 import { CollegeMap } from "@/components/CollegeMap";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // corpus changes rarely — serve stale, revalidate hourly
 
 export default async function MapPage() {
   let colleges: Awaited<ReturnType<typeof api.colleges>> = [];

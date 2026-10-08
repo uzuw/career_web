@@ -4,7 +4,7 @@ import { ArrowLeft, Banknote, MapPin, Globe } from "lucide-react";
 import { api } from "@/lib/api";
 import { CollegeImage } from "@/components/CollegeImage";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // corpus changes rarely — serve stale, revalidate hourly
 
 function salaryLine(c: Awaited<ReturnType<typeof api.career>>) {
   if (!c.salaryNp) return null;
@@ -105,7 +105,7 @@ export default async function CareerDetail({ params }: { params: { slug: string 
               {offering.map((c) => (
                 <Link key={c.slug} href={`/colleges/${c.slug}`} className="flex items-center gap-3 rounded-xl border p-2 transition hover:border-brand" style={{ borderColor: "var(--line)" }}>
                   <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg">
-                    <CollegeImage slug={c.slug} name={c.name} affiliation={c.affiliation} />
+                    <CollegeImage slug={c.slug} name={c.name} affiliation={c.affiliation} logoUrl={c.logoUrl} />
                   </div>
                   <div className="min-w-0">
                     <div className="truncate text-sm font-semibold">{c.name}</div>

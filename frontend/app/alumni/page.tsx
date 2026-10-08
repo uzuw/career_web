@@ -2,7 +2,7 @@ import { Users } from "lucide-react";
 import { api } from "@/lib/api";
 import { AlumniBrowser } from "@/components/AlumniBrowser";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // corpus changes rarely — serve stale, revalidate hourly
 
 export default async function AlumniPage() {
   let items: Awaited<ReturnType<typeof api.alumni>> = [];

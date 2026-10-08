@@ -12,8 +12,9 @@ import eligibilityRouter from "./routes/eligibility";
 import alumniRouter from "./routes/alumni";
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+// ponytail: open CORS in dev; set FRONTEND_URL (comma-separated) in prod.
+app.use(cors({ origin: process.env.FRONTEND_URL?.split(",") || true }));
+app.use(express.json({ limit: "100kb" }));
 
 app.get("/health", (_req, res) => res.json({ status: "ok" }));
 
@@ -25,6 +26,14 @@ app.use("/api/roadmaps", roadmapsRouter);
 app.use("/api/eligibility", eligibilityRouter);
 app.use("/api/alumni", alumniRouter);
 app.use("/api/flags", flagsRouter);
+
+// ponytail: JSON errors, not Express HTML pages (no stack leaks).
+app.use((_req, res) => res.status(404).json({ error: "Not found" }));
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+app.use((err: any, _req: any, res: any, _next: any) => {
+  console.error(err);
+  res.status(500).json({ error: "Internal server error" });
+});
 
 async function start() {
   await connectDB();

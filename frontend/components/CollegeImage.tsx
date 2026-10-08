@@ -42,28 +42,32 @@ export function CollegeImage({
   className?: string;
 }) {
   // Resolution order (every college always ends on a real <img>):
-  //   1. curated logoUrl — set in the corpus for the 17 colleges with a real
-  //      local /assets/college/{slug}.png (it already points at that file).
-  //   2. generated SVG placeholder /assets/college/{slug}.svg — exists for every
-  //      college, so there is never a broken image or a 404.
+  //   1. curated logoUrl — set at seed time for colleges with a real
+  //      local /assets/college/{slug}.png (points at that file).
+  //   2. generated SVG placeholder /assets/college/{slug}.svg — exists for
+  //      colleges without a real photo, so there is never a 404.
   const svg = slug ? `/assets/college/${slug}.svg` : null;
   const candidates = [logoUrl, svg].filter(Boolean) as string[];
 
   // index of the candidate currently shown; advances on error
   const [idx, setIdx] = useState(0);
+  const [failed, setFailed] = useState(false);
   const src = candidates[Math.min(idx, candidates.length - 1)] ?? null;
+  // ponytail: logos are wide/short — object-contain on white so the full logo
+  // stays visible; SVG placeholders are 320x180 fill art so object-cover is fine.
+  const isLogo = !!logoUrl && idx === 0 && src === logoUrl;
 
-  if (src) {
+  if (src && !failed) {
     return (
-      <div className={`relative ${className ?? ""}`}>
+      <div className={`relative h-full w-full ${className ?? ""}`}>
         <img
           src={src}
-          alt={name}
-          className="h-full w-full object-cover"
+          alt={`${name} logo`}
+          loading="lazy"
+          className={isLogo ? "h-full w-full bg-white object-contain p-1.5" : "h-full w-full object-cover"}
           onError={() => {
-            // move to the next candidate; the SVG (last) always exists, so this
-            // never falls through to a broken image.
-            setIdx((i) => Math.min(i + 1, candidates.length - 1));
+            if (idx < candidates.length - 1) setIdx((i) => Math.min(i + 1, candidates.length - 1));
+            else setFailed(true);
           }}
         />
         <ImagesLink name={name} />
@@ -71,7 +75,7 @@ export function CollegeImage({
     );
   }
 
-  // Only when a college has no slug at all — last-resort gradient tile.
+  // Last resort when every candidate failed (or no slug at all): initials tile.
   return (
     <div
       className={`relative flex items-center justify-center ${className ?? ""}`}

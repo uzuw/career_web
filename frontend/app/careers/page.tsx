@@ -1,7 +1,7 @@
 import { api } from "@/lib/api";
 import { CareerBrowser } from "@/components/CareerBrowser";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // corpus changes rarely — serve stale, revalidate hourly
 
 export default async function CareersPage() {
   let careers: Awaited<ReturnType<typeof api.careers>> = [];

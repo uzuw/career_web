@@ -2,7 +2,7 @@ import { FileCheck2 } from "lucide-react";
 import { api } from "@/lib/api";
 import { EntranceHub } from "@/components/EntranceHub";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // corpus changes rarely — serve stale, revalidate hourly
 
 export default async function EntrancePage() {
   let exams: Awaited<ReturnType<typeof api.exams>> = [];

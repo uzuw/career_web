@@ -4,7 +4,7 @@ import { api } from "@/lib/api";
 import { CareerCard } from "@/components/CareerCard";
 import { CollegeCard } from "@/components/CollegeCard";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // corpus changes rarely — serve stale, revalidate hourly
 
 export default async function Home() {
   let careers: Awaited<ReturnType<typeof api.careers>> = [];
@@ -97,18 +97,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* FEATURED COLLEGES */}
-      <section className="pb-14">
-        <div className="mb-4 flex items-end justify-between">
-          <h2 className="font-grotesk text-2xl font-bold">Featured colleges</h2>
-          <Link href="/colleges" className="flex items-center gap-1 text-sm font-semibold text-brand">All colleges <ArrowRight size={15} /></Link>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {colleges.slice(0, 8).map((c) => <CollegeCard key={c.slug} college={c} />)}
-        </div>
-      </section>
-
-      {/* POPULAR COLLEGES — recognizable institutions across affiliations */}
+      {/* POPULAR COLLEGES — one curated set, not a wall of cards */}
       <section className="pb-14">
         <div className="mb-4 flex items-end justify-between">
           <h2 className="font-grotesk text-2xl font-bold">Popular colleges</h2>

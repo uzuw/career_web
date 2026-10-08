@@ -72,7 +72,9 @@ export interface Roadmap {
 }
 
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, { cache: "no-store" });
+  // ponytail: revalidated hourly — corpus changes rarely, so pages serve stale
+  // while revalidating instead of hitting the API on every visit.
+  const res = await fetch(`${API_BASE}${path}`, { next: { revalidate: 3600 } });
   if (!res.ok) throw new Error(`API ${path} -> ${res.status}`);
   return res.json() as Promise<T>;
 }
